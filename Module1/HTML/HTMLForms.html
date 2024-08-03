@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- A form in HTML is created using the <form> element. Inside this element, you can have various input fields, buttons, and
+        other form elements. -->
+
+        <h2> Registration Form </h2>
+
+        <form>
+
+            <div>
+                <label for="name"> Name : </label>
+                <input id="name" name="myName" type="text" />
+            </div>
+
+
+            <br/>
+          
+
+            <div>
+            <label for="email"> Email : </label>
+            <input id="email" name="myEmail" type="email" />
+            </div>
+
+            <br />
+
+            <div>
+            <label for="password"> Password : </label>
+            <input id="password" name="myPassword" type="password" />
+            </div>
+
+                        <br />
+
+
+            <div>
+                <label> Age </label>
+                <input type="number" name="myAge"> 
+            </div>
+
+
+            <br />
+
+
+            <div>
+            <label for="message"> Message: </label>
+            <textarea name="myTextArea" id="message" ></textarea>
+            </div>
+
+            <br />
+
+            <div>
+                <label> Select Gender </label>
+                <div>
+                    <label> Male: </label>
+                    <input type="radio" name="gender"  value="male" />
+
+                    <label> Female: </label>
+                    <input type="radio" name="gender" value="female" />
+
+                    <label> Others: </label>
+                    <input type="radio"  name="gender" value="others" />
+                </div> 
+            </div>
+
+
+            <div>
+                <label> Select Hobbies </label>
+                <div>
+                    <label> Reading: </label>
+                    <input type="checkbox" name="hobby" value="read" />
+            
+                    <label> Cooking: </label>
+                    <input type="checkbox" name="hobby" value="cook" />
+            
+                    <label> Driving: </label>
+                    <input type="checkbox" name="hobby" value="drive" />
+                </div>
+            </div>
+
+
+            <div>
+                <label for="birthday">Birthday:</label>
+                <input type="date" id="birthday" name="birthday" >
+            </div>
+
+
+          
+
+            <div>
+                <label for="resume">Upload your resume:</label>
+                <input type="file" id="resume" name="resume" required>
+            </div>
+
+
+            <div>
+                <input type="submit" value="Register">
+            </div>
+
+        </form>
+    
+</body>
+</html>
