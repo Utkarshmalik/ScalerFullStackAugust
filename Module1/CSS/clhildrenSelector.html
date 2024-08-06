@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+/* 
+    .c1{
+        color: blue;
+    } */
+
+    /* h1{
+        color: blue;
+    } */
+
+    /* .c1 > h1 {
+        color: blue;
+    } */
+
+  /* .c1>h1{
+    color: blue;
+  } */
+
+  div > h1 > span {
+    color: blue;
+  }
+
+   
+</style>
+
+<body>
+
+    <!-- select "I'm the direct son" and make it blue  -->
+    <div class="c1">
+        <h1>
+            <span>
+            I'm the direct son
+            </span>
+        </h1>
+    </div>
+
+    <div class="c1">
+        <span>
+            <h1>
+                <span> 
+                    I'm the indirect son
+                </span>
+            </h1>
+         
+        </span>
+    </div>
+
+</body>
+
+</html>

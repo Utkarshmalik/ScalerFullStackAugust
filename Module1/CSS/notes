@@ -1,0 +1,62 @@
+CSS is a rule-based language you define the rules by specifying groups of styles that should be applied to particular elements or groups of elements on your web page.
+
+
+The user agent stylesheet in CSS is a set of default styles that web browsers apply to HTML documents when no specific styles are provided by the author. Each web browser has its own user agent stylesheet, and it serves as a baseline style for rendering HTML elements. The term "user agent" refers to the software (web browser) that acts on behalf of the user when interacting with web content.
+
+
+
+
+1. External CSS
+
+You can create a separate file for CSS having the extension ".css".
+
+Here you do not need to use any HTML tag. You can directly write your CSS and properties.
+
+
+2. Internal CSS
+
+When you write CSS in the same HTML file. (using the style tag)
+
+
+3. Inline CSS
+
+It is writing CSS for a particular element. (using style attribute.)
+
+
+Precedence 
+
+
+Inline CSS: Styles defined directly within the HTML element using the style attribute have the highest precedence. They override any other styles applied to the same element.
+
+
+
+Internal CSS: Styles defined within a <style> tag in the <head> section of the HTML document come next in precedence. They apply to all elements of the same type throughout the document, unless overridden by inline styles.
+
+
+
+External CSS: Styles defined in an external CSS file linked to the HTML document using the <link> tag have the lowest precedence. They apply globally to all elements of the specified type, unless overridden by inline or internal styles.
+
+
+
+In cases of conflicting styles (where the same property is defined in multiple places), the style with the highest precedence will be applied.
+
+ If two conflicting styles have the same precedence, the one defined later in the document will override the earlier one.
+
+
+
+
+
+
+Element Selector
+
+Class Selector (.a)
+
+Id Selector (#a)
+
+Descedent Selector (a b)
+
+Children selectors  (a>b)
+
+Multiple Classes
+
+Attribute Selector 
