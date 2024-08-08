@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+
+        .box1{
+            width: 200px;
+            height: 100px;
+
+            background-color: red;
+
+            box-sizing: content-box;
+
+            padding:5px;
+            border:3px solid black;
+        }
+
+        .box2{
+
+            height: 200px;
+            width: 300px;
+            padding:10px 20px 30px 40px;
+
+            border-top: 5px solid black;
+            border-right: 6px solid black;
+            border-bottom: 7px solid black;
+            border-left: 8px solid black;
+
+            border-color: black;
+
+
+            box-sizing: border-box;
+
+        }
+
+    </style>
+
+</head>
+<body>
+
+    <div class="box1">
+
+        I am a box 
+
+    </div>
+
+
+    <div class="box2">
+    
+        I am a box
+    
+    </div>
+    
+</body>
+</html>
+
+
+<!-- Use Case: Use content-box when you want the content area to have a fixed size, and you don’t mind the element growing as
+padding and borders are added. This is the traditional box model behavior and is useful when exact content dimensions
+are crucial, regardless of padding or borders. -->
+
+<!-- 
+Use Case: Use border-box when you want an element to maintain a consistent size regardless of the amount of padding or
+border. This is especially useful for responsive design, where you want to ensure that elements fit within a specific
+space without having to manually calculate the total size. -->
