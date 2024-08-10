@@ -54,3 +54,20 @@
 
 </body>
 </html>
+
+
+Pseudo-classes are used to define a special state of an element. They don’t create new elements but apply styles based on the current state orposition of an existing element.
+
+
+button:hover {
+background-color: lightblue;
+}
+
+Pseudo-elements are used to style specific parts of an element or to insert content before or after the content of an element. They create virtual elements that can be styled.
+
+Use ::before to insert content just before the content of an element, and ::after to insert content just after. They are commonly used for adding icons, quotes, or other visual elements.
+
+h1::after {
+content: " ★";
+color: gold;
+}

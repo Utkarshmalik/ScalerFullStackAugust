@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+
+        .container{
+            height: 100vh;
+            background-color: tomato;
+            border:2px solid black;
+
+            display: flex;
+
+            flex-direction:row;
+
+            /* flex-direction: column; */
+            /*flex-direction: row-reverse; */
+            /* flex-direction: column-reverse; */
+
+            /* justify-content:flex-start; */
+            /* justify-content: flex-end; */
+            justify-content: center;
+            /* justify-content: space-between; */
+            /* justify-content: space-around; */
+            /* justify-content: space-evenly; */
+
+            /* align-items:flex-start; */
+            /* align-items: flex-end; */
+            align-items: center;
+            /* align-items: stretch; */
+            /* align-items: baseline; */
+
+            flex-wrap: nowrap;
+            flex-wrap: wrap;
+            /* flex-wrap: wrap-reverse; */
+
+        }
+        
+        .box{
+            width: 200px;
+            background-color: dodgerblue;
+            margin: 10px;
+            height: 200px;
+            padding: 10px;
+        }
+
+        /* .box3{
+            font-size: 42px;
+        }
+
+        .box2{
+            font-size: 24px;
+        } */
+
+    </style>
+
+</head>
+<body>
+
+    <div class="container">
+            <div class="box box1">Box 1</div>
+            <div class="box box2">Box 2</div>
+            <div class="box box3">Box 3</div>
+            <div class="box">Box 4</div>
+          <div class="box">Box 4</div>
+            <div class="box">Box 4</div>
+        <div class="box">Box 4</div>
+        <div class="box">Box 4</div>
+        <div class="box">Box 4</div>
+        <div class="box">Box 4</div>
+                <div class="box">Box 4</div>
+                <div class="box">Box 4</div><div class="box">Box 4</div>
+                <div class="box">Box 4</div><div class="box">Box 4</div>
+                <div class="box">Box 4</div>
+
+    </div>
+    
+</body>
+</html>
+
+
+<!-- Default property of flex box is to arrange all the elements in the row as you can also see here. -->
+
+<!-- 
+align-items: flex-start;
+Flex items align at the start of the cross axis (top for row layout, left for column layout).
+No additional space is added between items and the container's cross axis edge.
+align-items: flex-end;
+Flex items align at the end of the cross axis (bottom for row layout, right for column layout).
+No additional space is added between items and the container's cross axis edge.
+align-items: center;
+Flex items are vertically centered along the cross axis.
+Equal space is added above and below the items, creating a balanced appearance.
+
+align-items: baseline;
+Flex items are aligned along their text baselines.
+This value can be useful when items have varying font sizes or text content.
+
+align-items: stretch;
+Flex items are stretched to fill the container's cross axis.
+If no height is explicitly set on the items, they will take up the full height of the container. -->
+
+
+<!-- flex-wrap: nowrap;
+This is the default value.
+Flex items will stay on a single line, even if they cause overflow. They won't wrap to the next line.
+flex-wrap: wrap;
+When there's not enough space for all items on a single line, flex items will wrap to the next line. They will stack
+vertically if needed.
+flex-wrap: wrap-reverse;
+Similar to wrap, but the wrapping happens in reverse order. The last flex item becomes the first item on the new line,
+and so on. -->

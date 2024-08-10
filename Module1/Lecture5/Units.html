@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+
+        html{
+            //mobile
+            font-size: 8.5px;
+
+            //desktop
+            font-size:16.25px 
+
+            //ipad 
+            font-size:12.56px
+
+        }
+        
+        .px-example{
+            background-color: blue;
+            color: white;
+            padding: 10px;
+            font-size: 16px;
+        }
+
+        body{
+            border:3px solid red;
+            width: 80vw;
+        }
+
+        .percentage-example{
+
+            background-color: blueviolet;
+            padding:20px;
+            margin: 10px;
+            width:50%;
+            margin: 10%;
+
+        }
+
+        .container{
+            width: 100%;
+            display: flex;
+            background-color: aqua;
+            height: 800px;
+        }
+
+        .sidebar{
+            width: 25%;
+            background-color: blueviolet;
+        }
+
+        .main-content{
+            width: 75%;
+            background-color: yellow;
+            height: 100vh;
+            font-size: 3rem;
+            padding: 1rem;
+        }
+
+    </style>
+
+</head>
+<body >
+
+
+    <div class="px-example"></div>
+
+
+    <div class="container">
+
+    <div class="sidebar">SideBar</div>
+
+    <div class="main-content">Main Content</div>
+
+    </div>
+
+    
+
+    
+</body>
+</html>
+
+
+
+
+
+<!-- Pixels (px):
+Pixels are like the tiny dots on your screen. When you use pixels, you're saying exactly how many dots something should
+be tall or wide.
+
+Example: font-size: 16px; makes the text size equivalent to 16 dots high.
+
+Use Case: Pixels are great for when you want precise control, like for a border width or a button size. -->
+
+<!-- Percentage (%):
+
+The % unit is relative to the size of the containing element.
+
+Useful for creating fluid layouts that adapt to different screen sizes.
+
+percentages for padding and margin are calculated based on the width of the containing block, not the element itself.
+
+Use Case: Percentages are useful for responsive design, where you want elements to change size based on the screen or parent element.
+
+
+vw and vh
+
+vw is a percentage of the viewport width, and vh is a percentage of the viewport height.
+Useful for creating responsive designs based on the viewport size.
+
+
+REM:
+
+relative to the font-size of the root element (usually the <html> tag).
+
+Useful for maintaining consistent spacing throughout the document.
+
+
+Use Case: Rems are great for consistent scaling across your website, as they always refer to a single base size.
+
+
+-->
