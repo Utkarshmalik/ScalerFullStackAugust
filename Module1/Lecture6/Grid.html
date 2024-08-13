@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+
+        *{
+            padding: 0x;
+            margin: 0px;
+        }
+
+          body{
+            font-size: 20px;
+            line-height: 1.5;
+            color: dodgerblue;
+            background-color: tomato;
+        }
+
+        .container{
+            width: 1200px;
+            margin: 100px auto;
+            padding: 10px;
+            display: grid;
+            border:2px solid black;
+
+            /* grid-template-columns: 200px 300px 500px 100px; */
+            /* grid-template-columns: 1fr 1fr 1fr; */
+            /* grid-template-columns: 1fr 2fr 1fr; */
+             /* column-gap: 20px;
+            row-gap: 30px; */
+            /* gap:10px; */
+
+            /* grid-template-columns: 1fr 2fr 1fr; */
+            /* grid-template-columns: 1fr 1fr 1fr; */
+            /* grid-template-columns: repeat(3, 1fr); */
+            /* grid-template-rows: 100px 100px 100px; */
+            /* grid-template-rows: 1fr 3fr 1fr; */
+
+
+            grid-template-columns: 1fr 1fr 1fr;
+            grid-template-rows: 200px 200px 200px;
+
+
+
+
+
+        }
+
+        .item{
+            background-color: dodgerblue;
+            color: white;
+            font-size: 20px;
+            border: 1px solid lightblue;
+        }
+
+        
+        .item:nth-of-type(2){
+            background-color: palevioletred;
+            /* width: 100px;
+            height: 100px; */
+            /* align-self: center;
+            justify-self: center; */
+
+            /* grid-row: 1/3; */
+            grid-column: 1/5;
+        }
+
+        .item:nth-of-type(1){
+            grid-column: span 2;
+        }
+
+         .item:nth-of-type(8){
+            grid-column: span 3;
+        }
+
+
+
+    </style>
+
+</head>
+<body>
+    <div class="container">
+        <div class="item">Item 1</div>
+        <div class="item">Item 2</div>
+        <div class="item">Item 3</div>
+        <div class="item">Item 4</div>
+        <div class="item">Item 5</div>
+        <div class="item">Item 6</div>
+        <div class="item">Item 7</div>
+        <div class="item">Item 8</div>
+        <div class="item">Item 9</div>
+    </div>
+    
+</body>
+</html>
+
+
+
+
+<!-- /* align-items: end; */
+
+/* total frames : 4
+size of one frame : 300px
+
+first ciolumn: 300px
+second coulm:600px
+thrid column:300px; */
+
+
+/* // suppose the container is of length 120px. */
+/* grid-template-columns: 1fr 1fr 1fr; */
+/* Total frames will be 1+1+1 = 3. */
+/* size of each frame will be 120/3 = 40px. */ -->
