@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+
+        h1{
+            background-color: yellow;
+        }
+
+        h1{
+            background-color: pink;
+        }
+
+        #fruits{
+            color: chocolate;
+        } 
+
+        .favourate {
+            color: green;   //(0,0,1,0)
+        }
+
+        ul li {
+            color: pink;    //(0,0,0,2)
+        }
+
+        ul#fruits li.favourate{ 
+            color: blue;    //(0,1,1,2)
+        }
+
+        ul#fruits li{
+
+            color:  gold !important;    //(0,1,0,2)
+
+        } 
+
+        li{
+            color:aqua;
+        }
+
+        ul#fruits{
+            color: blueviolet;
+        } 
+
+        li.favourate{
+            color: aqua;
+
+        }
+
+
+        /* div p{
+            color: blue;         (0,0,0,1)
+        }
+
+        #main p {
+            color: red;          (0,1,0,1)  
+        }
+
+        .important p {
+            color: gray;        (0,0,1,1)
+        }
+
+        p{
+            color: brown;      (0,0,0,1)
+        } */
+
+    </style>
+
+</head>
+<body>
+
+    <div id="main" class="important">
+        <p>  Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ex voluptatibus, doloremque sint corrupti totam sit optio voluptate, possimus, quis consectetur tempore aliquam! Et nobis molestias, saepe officia exercitationem ratione iste.</p>
+    </div>
+
+    <ul id="fruits">
+
+        <li>Apple</li>
+            <!-- //(1,0,0,0) -->
+        <li class="favourate" >Mango</li>
+        <li>Orange </li>
+
+    </ul>
+
+    <ul>
+
+        <li>Eat </li>
+        <li>Sleep</li>
+        <li>Repeat</li>
+
+    </ul>
+    
+</body>
+</html>
+
+
+<!-- Rules  -->
+
+The specificity score is typically represented as a four-part value: `(a, b, c, d)`
+
+a: Inline styles (`style=""` in HTML) have the highest specificity.
+b: IDs (`#id`) are next in specificity.
+c: Classes (`.class`), attributes (`[type="text"]`), and pseudo-classes (`:hover`, `:nth-child`)
+d: Element selectors (e.g., `div`, `p`) and pseudo-elements (`::before`, `::after`) have the
+lowest specificity.
+
+When comparing specificity, the highest value in each segment is considered first
+
+(1,0,0,0)  and (0,10,0,0) => 

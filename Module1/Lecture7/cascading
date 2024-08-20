@@ -3,9 +3,50 @@ Cascading Nature of CSS - A Summary
 In layman's terms, the "cascading" in CSS can be likened to a waterfall flowing down a series of steps. Just as water flows from the top and cascades down, styles in CSS are applied from the top of the stylesheet to the bottom, with later styles flowing down and potentially overriding earlier ones.
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 Top-Down Application: Styles in CSS are applied in the order they are written in the stylesheet. This means a rule written at the bottom of your CSS file will be applied after all the rules written above it.
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 Inheritance: Some styles naturally cascade from parent elements to their children. For example, if you set the font-family on the body element, this style will be inherited by all the text inside the body, unless there's a more specific rule applied to the text.
+
+
+
+
+
+
+
+
+
+
+
+
 
 Last Rule Wins: If two rules have the same level of specificity, the last one written in the CSS file takes precedence. This is like the water at the bottom of the waterfall being the most recent to fall, and it's what determines the final outcome. Understanding these principles helps you predict how styles will be applied and how to effectively structure your stylesheets. It's the cascading nature of CSS that gives it both its power and its elegance.
 

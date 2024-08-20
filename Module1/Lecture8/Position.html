@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+
+        body{
+            border:3px solid red;
+            height: 2000px;
+        }
+        
+        .normal-flow{
+            position: static;
+            top:20px; /* This has no effect */
+            right: 30px; /* This has no effect */
+        }
+        
+        .bookshelf {
+
+            position: relative;
+            width: 500px;
+            height: 500px;
+            border:1px solid rebeccapurple;
+            margin: 100px auto;
+        }
+
+        .book{
+            width: 50px;
+            height: 100px;
+            color: black;
+            background-color: aqua;
+            text-align: center;  
+            display: inline-block;          
+        }
+
+        .book2{
+
+            /* position: relative;
+            top:20px;
+            left: 30px; */
+        }
+
+        
+        .book3{
+            position: absolute;
+            bottom: 0px;
+            right: 0px;
+        }
+
+
+        .book4{
+            position: fixed;
+            top:100px;
+            right: 50px;
+        }
+
+        .book5{
+            /* position: sticky;
+            top: 0px; */
+        }
+
+        .navbar{
+            height: 200px;
+            width: 100vw;
+            margin-top: 100px;
+            background-color: black;
+            position: sticky;
+            top: 0px;
+        }
+
+    </style>
+
+</head>
+<body>
+
+    <!-- <div class="normal-flow"> I am a normal flow </div> -->
+
+    <div class="navbar"> Navbar </div>
+
+    <div class="bookshelf">
+
+        <div class="book">Book 1 </div>
+        <div class="book book2">Book 2 </div>
+        <div class="book book3">Book 3 </div>
+        <div class="book book4">Book 4 </div>
+        <div class="book book5">Book 5 </div>
+
+    </div>
+
+    
+</body>
+</html>
+
+
+
+<!-- Position Static 
+
+Default Behavior: This is the default value for the position property. Elements with position: static are positioned in
+the normal flow of the document, meaning they will be displayed one after another, vertically and horizontally, based on
+their order in the HTML.
+
+No Offsetting: Elements with position: static are not affected by the top, right, bottom, and left properties. Any attempts to apply these properties will have no effect.
+
+
+Position : realtive
+
+In CSS, the position: relative property is used to position an element relative to its normal position in the document flow. To explain this with a real-life analogy, let's consider a scenario of arranging books on a shelf.
+
+
+Position : absolute
+
+In CSS, applying position: absolute to an element takes it out of the normal document flow and positions it relative to its closest positioned ancestor (an ancestor element that has a position value other than static) or, if there is none, relative to the initial containing block, usually the viewport.
+
+
+Position : Sticky 
+
+When an element is given a "position" value of "sticky," it acts like a relative-positioned element within its containing element until a certain scroll threshold is reached. Once the user scrolls beyond that threshold, the element becomes "stuck" in place and behaves like a fixed-positioned element, remaining visible on the screen.
+
+In other words, a sticky element starts as part of the normal document flow, just like a relatively positioned element. As the user scrolls, the element follows its normal position until it reaches a designated point (usually when its top or bottom edge reaches a specific distance from the viewport's edge). At that point, it becomes "sticky" and remains fixed at that position while the rest of the content scrolls.
+
+
+
+
+-->
