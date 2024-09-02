@@ -6,14 +6,19 @@ let myRadiusArray = [2, 3, 4, 5, 8]
 
 function calculate(radiusArr, logic){
 
-    let results = [];
+    // let results = [];
 
-    for(let i=0;i<radiusArr.length;i++){
-        results.push(logic(radiusArr[i]));
-    }
+    // for(let i=0;i<radiusArr.length;i++){
+    //     results.push(logic(radiusArr[i]));
+    // }
 
-    return results;
-    
+    // return results;
+
+
+    return radiusArr.map(function(val,indx,arr){
+        return logic(val);
+    })
+
 }
 
 function calculateAreaLogic(radius){
