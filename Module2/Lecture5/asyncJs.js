@@ -1,28 +1,33 @@
 
 
 
+console.log("Start");
+
+function syncSayHii(){
+
+    console.log("Hello");
+}
+
+syncSayHii();
+
+console.log("End");
+
+
+
+
+
+
+
+
+
 
 // console.log("Start");
 
-// function syncSayHii(){
-
+// setTimeout(function(){
 //     console.log("Hello");
-// }
-
-// syncSayHii();
+// },2000);
 
 // console.log("End");
-
-
-
-
-console.log("Start");
-
-setTimeout(function(){
-    console.log("Hello");
-},2000);
-
-console.log("End");
 
 
 
