@@ -1,0 +1,40 @@
+model is constructed as a tree of Objects:
+
+Document: The root node that represents the entire HTML document.
+Elements: Represent each tag in the HTML document. These are the nodes that have children (inner elements or text).
+Attributes: Define properties of elements, such as class, id, or style.
+Text: The actual text within elements is also considered a node.
+
+
+JavaScript can be used to interact with the DOM to:
+
+Add, remove, or modify elements: You can create new elements, delete existing ones, or change their properties.
+Change styles: Modify the CSS of elements to change their appearance.
+Respond to events: Set up event listeners to respond to user actions like clicks, keyboard input, or page loading.
+
+
+
+
+
+Step 1: Selecting the html element
+
+To select or identify a particular html element we have methods.
+
+getElementById - If you want to select an element based on ID
+querySelector - If you want to select an element based on any selector like class id or a combination or a specific
+element
+
+Step 2: Attach an event Listener 
+
+What is an Event?
+
+An event refers to any action that triggers a specific response
+
+
+EventListeners 
+
+addEventListener: The addEventListener method allows us to attach an event to any DOM element. This method is essential
+for interactive web development, enabling dynamic responses to user actions.
+
+
+Step 3: CreateElement and AppendChild

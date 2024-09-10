@@ -1,0 +1,53 @@
+<!-- //classList  -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <div id="myDiv" class="content visible" > Hello World  </div>
+
+
+   <script>
+
+    const div = document.getElementById('myDiv');
+
+// The classList property in the Document Object Model(DOM) is a read - only property that returns a live collection of the class attributes of the element.
+   console.log(div.classList);
+
+   //add a new class 
+   div.classList.add("highlight");
+
+   //remove a class 
+   div.classList.remove("visible");
+
+   //check if a class exists 
+
+   if(div.classList.contains("content")){
+    console.log("The div has a content class");
+   }else{
+    console.log("The div does not has a content class");
+   }
+   
+    
+    
+
+    </script>
+
+</body>
+</html>
+
+
+<!-- Here are some of the most commonly used methods of classList:
+
+add(className): Adds a specified class to the element. If the class already exists in the element's class list, it will
+not add it again.
+
+remove(className): Removes a specified class from the element. If the class does not exist, it does nothing.
+
+contains(className): Checks if a specified class exists in the element's class list, returning true if it does and false
+otherwise. -->
