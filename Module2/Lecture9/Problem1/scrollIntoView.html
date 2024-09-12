@@ -1,0 +1,49 @@
+<!-- The scrollIntoView() method in JavaScript is used to scroll an element into the visible area of the browser window. It
+ensures that the element is visible within the viewport by scrolling the container (or the entire window) to bring the
+element into view.
+
+element.scrollIntoView([options]);
+
+options: This can be either a Boolean or an object with more advanced settings:
+
+Boolean: If true, it aligns the element to the top of the scrollable area. If false, it aligns the element to the
+bottom.
+
+Object: For more control, you can pass an object with properties like:
+behavior: Defines the transition animation. Values: "auto" (default), "smooth".
+block: Vertical alignment. Values: "start", "center", "end", "nearest".
+inline: Horizontal alignment. Values: "start", "center", "end", "nearest". -->
+
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>scrollIntoView Example</title>
+</head>
+
+<body>
+    <button>Scroll to Paragraph</button>
+
+    <div style="height: 500px; overflow: auto;">
+        <p>Content above</p>
+        <p id="target" style="margin-top: 800px;">This is the target paragraph!</p>
+        <p>Content below</p>
+    </div>
+
+    <script>
+
+        const btn = document.querySelector("button");
+
+        btn.addEventListener("click",()=>{
+
+            const targetElement = document.querySelector("#target");
+
+            targetElement.scrollIntoView({behavior:"smooth",block:'center'});
+            
+        })
+
+    </script>
+</body>
+
+</html>
