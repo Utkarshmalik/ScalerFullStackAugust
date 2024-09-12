@@ -1,0 +1,61 @@
+<!-- Create a web application feature where clicking a button causes it to be removed from the page, and simultaneously, two
+new buttons are created and added to the page in its place. -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF - 8" />
+    <meta http-equiv="X - UA - Compatible" content="IE = edge" />
+    <meta name="viewport" content="width = device-width, initial-scale = 1.0" />
+    <title>Document</title>
+</head>
+
+<body>
+    <div style="border:3px solid red" id="doubleHolder">
+        <button class="double">double</button>
+    </div>
+
+    <script>
+        //Q Create a button that is destroyed by clicking on it but two new buttons are created in it's place.
+
+        const btn = document.querySelector(".double");
+        const div = document.querySelector("#doubleHolder");
+
+        div.addEventListener("click",(e)=>{
+
+            let targetElement = e.target;
+
+            console.log(e.target, e.currentTarget);
+
+
+            if(targetElement.classList.contains("double")){
+                
+                let btn1 =  document.createElement("button");
+                btn1.setAttribute("class", "double");
+                btn1.innerText = "Button1";
+
+                let btn2  = document.createElement("button");
+                btn2.setAttribute("class","double");
+                btn2.innerText = "Button2";
+
+
+                e.currentTarget.appendChild(btn1);
+                e.currentTarget.appendChild(btn2);
+
+                e.currentTarget.removeChild(e.target);
+
+
+            }
+    
+        })
+
+
+    </script>
+</body>
+
+</html>
+<!-- 
+when again clicked on any of new buttons it should behave same as button which got removed i.e remove and
+then add new buttons -->
