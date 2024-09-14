@@ -1,0 +1,71 @@
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Roboto", sans-serif;
+}
+
+.container{
+
+    background-color: #01161E;
+    color: white;
+    height: 90vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+nav{
+    background-color: darkgray;
+    height: 10vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+nav form{
+
+    width: 70%;
+    display: flex;
+    justify-content: space-between;
+    
+}
+
+.searchField{
+    width: 90%;
+    font-size: 1.2rem;
+    padding:0.2rem 0px;
+    border: 2px solid white;
+
+
+}
+nav form button { 
+    background-color: green;
+    color: white;
+    cursor: pointer;
+    font-size: 1.2rem;
+    padding:5px 20px;
+}
+
+.weather{
+    display: flex;
+    align-items: center;
+    font-size: 1.2rem;
+}
+
+.weather div{
+    margin: 1rem;
+}
+
+.weather p {
+    font-size: 2rem;
+}
+
+.weather_condition{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin: 5px;
+    font-size: 1.2rem;
+}
