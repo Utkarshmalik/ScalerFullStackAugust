@@ -3,6 +3,8 @@
     --blue:lightblue;
     --purple:purple;
     --green:lightgreen;
+    --light:white;
+    --dark:black;
 }
 
 .toolbox {
@@ -33,13 +35,6 @@
     background-color: yellow;
 }
 
-.action-btn {
-    border: 3px solid pink;
-    width: 10rem;
-    height: 70%;
-    margin-left: 5rem;
-}
-
 
 .pink{
     background-color: var(--pink);
@@ -55,4 +50,94 @@
 
 .green{
     background-color: var(--green);
+}
+.light{
+    background-color: var(--light);
+}
+
+.action-btn {
+    width: 10rem;
+    height: 70%;
+    margin-left: 5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    background-color: var(--light);
+    color: var(--dark)
+
+}
+
+.add-btn,.remove-btn{
+
+    font-size: 2rem;
+    cursor: pointer;
+}
+
+
+.heading_cont{
+    display: flex;
+    text-align: center;
+    padding: 3rem;
+}
+
+.heading_pending{
+    width: 70%;
+}
+
+.heading_finished{
+    width: 30%;
+}
+
+.container_wrapper{
+    display: flex;
+}
+
+.container{
+    min-height:800px;
+    padding: 3rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-self: center;
+    justify-content: center;
+
+}
+
+.pending_cont{
+    width: 70%;
+    gap: 2rem;
+}
+
+.finished_cont{
+    width: 30%;
+}
+
+
+.ticket_cont{
+    height: 15rem;
+    width: 18rem;
+    background-color: greenyellow;
+    position: relative;
+}
+
+.ticket_color{
+    height: 10%;
+    background-color: var(--pink);
+}
+
+.ticket_id{
+    padding-left: 1rem;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.ticket_area{
+    font-size: 1.5rem;
+    padding: 1rem;
+}
+
+.lock_unlock{
+    font-size: 1.5rem;
+    position: absolute;
+    bottom: 10px;
+    right: 15px;
 }
