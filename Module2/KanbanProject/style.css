@@ -1,0 +1,58 @@
+:root{
+    --pink:lightpink;
+    --blue:lightblue;
+    --purple:purple;
+    --green:lightgreen;
+}
+
+.toolbox {
+
+    display: flex;
+    background-color: black;
+    height: 5rem;
+    color: white;
+    align-items: center;
+
+}
+
+.toolbox-priority{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 20rem;
+    height: 70%;
+    margin-left: 5rem;
+    background-color: #393c3f;
+    
+}
+
+
+.color{
+    height: 2rem;
+    width: 3.5rem;
+    background-color: yellow;
+}
+
+.action-btn {
+    border: 3px solid pink;
+    width: 10rem;
+    height: 70%;
+    margin-left: 5rem;
+}
+
+
+.pink{
+    background-color: var(--pink);
+}
+
+.blue{
+    background-color: var(--blue);
+}
+
+.purple{
+    background-color: var(--purple);
+}
+
+.green{
+    background-color: var(--green);
+}

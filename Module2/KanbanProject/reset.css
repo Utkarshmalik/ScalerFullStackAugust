@@ -1,0 +1,27 @@
+html {
+    box-sizing: border-box;
+}
+
+*,
+*::after,
+*::before {
+    box-sizing: inherit;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+}
+ð
+a {
+    text-decoration: none;
+}
+
+li {
+    list-style: none;
+}
+
+.disabled {
+    cursor: not-allowed;
+}

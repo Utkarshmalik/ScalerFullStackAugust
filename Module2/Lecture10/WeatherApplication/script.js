@@ -2,6 +2,9 @@ const form = document.querySelector("form");
 const searchField = document.querySelector(".searchField");
 const apikey="c77a19bb3bfc4086886163212241409";
 const temperatureField = document.querySelector(".temp");
+const emojiField = document.querySelector(".weather_condition img");
+const weatherField = document.querySelector(".weather_condition span");
+const dateField = document.querySelector(".time_location span");
 const cityName = document.querySelector(".time_location p");
 
 form.addEventListener("submit",search);
@@ -58,11 +61,24 @@ async function fetchData(query){
 
 function updateDOM(temp,locationName, time,emoji,condition){
 
-    
-    console.log(temp);
-    console.log(locationName);
-
     temperatureField.innerText = temp;
     cityName.innerText = locationName;
+    console.log(emojiField);
+    emojiField.src = emoji;
+    weatherField.innerText = condition;
+    
+    const exactTime = time.split(" ")[1];
+    const exactDate = time.split(" ")[0];
+    const exactDay =  getDayFullName(new Date(exactDate).getDay());
 
+    const fullDateTime = `${exactTime} ${exactDay} ${exactDate}`;
+
+    dateField.innerText = fullDateTime;
+
+}
+
+
+function getDayFullName(num){
+    const daysOfWeek = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+    return daysOfWeek[num];
 }
