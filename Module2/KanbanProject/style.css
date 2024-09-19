@@ -32,7 +32,7 @@
 .color{
     height: 2rem;
     width: 3.5rem;
-    background-color: yellow;
+    cursor: pointer;
 }
 
 
@@ -123,7 +123,7 @@
 
 .ticket_color{
     height: 10%;
-    background-color: var(--pink);
+    /* background-color: var(--pink); */
 }
 
 .ticket_id{
