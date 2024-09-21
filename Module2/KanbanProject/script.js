@@ -4,11 +4,30 @@ const priorityColors = document.querySelectorAll(".priority_color");
 const textArea = document.querySelector(".textarea_cont");
 const pendingContainer = document.querySelector(".pending_cont");
 const priorityMenuColors = document.querySelectorAll(".color");
-
+const deleteButton = document.querySelector(".remove-btn");
+let isDeletedModeActivated = false;
+const colors = ["pink","blue","purple","green"];
 
 
 addBtn.addEventListener("click",()=>{
     model.style.display = "flex";
+})
+
+deleteButton.addEventListener("click",(e)=>{
+
+     //if de-activated : make color : red 
+    //if activated : make color : default 
+
+
+    if(!isDeletedModeActivated){
+        e.target.classList.add("red");
+
+    }else{
+         e.target.classList.remove("red");
+    }
+
+    isDeletedModeActivated = ! isDeletedModeActivated;
+
 })
 
 
@@ -74,6 +93,7 @@ function createTicket(color, content){
     const ticketContainer = document.createElement("div");
     ticketContainer.setAttribute("class","ticket_cont");
 
+
     const ticketId = randomTicketId();
 
     //innerHTML
@@ -83,10 +103,77 @@ function createTicket(color, content){
         <div class="ticket_area"> ${content} </div>
         <div class="lock_unlock">
             <i class="fa fa-lock"></i>
-    </div>
+        </div>
     `;
 
+    const lockBtn = ticketContainer.querySelector(".lock_unlock");
+    const ticketArea = ticketContainer.querySelector(".ticket_area");
+    const ticketPriority = ticketContainer.querySelector(".ticket_color");
+
+
+    lockBtn.addEventListener("click",(e)=>handleLockUnlockClick(e,ticketArea));
+    ticketContainer.addEventListener("click",handleTicketContainerClick);
+    ticketPriority.addEventListener("click",handleTicketPriority);
+
     pendingContainer.appendChild(ticketContainer);
+}
+
+function handleTicketPriority(e){
+
+    console.log(e.currentTarget);
+
+    const existingColor = e.currentTarget.classList[1];
+
+
+        const existingColorIndex = colors.indexOf(existingColor);
+        ///existingIndex : 0 -> 1
+        // existingIndex : 1 -> 2
+        // existingIndex : 2  -> 3
+        //existingIndex : 3 -> 0 
+
+        const newColorIndex = (existingColorIndex + 1)%colors.length;
+        const newColor = colors[newColorIndex];
+
+
+        e.currentTarget.classList.remove(existingColor);
+        e.currentTarget.classList.add(newColor);
+
+}
+
+function handleTicketContainerClick(e){
+
+    //check first if the delete nbutton is activated
+    //if activated : hide/remove that ticket
+    if(isDeletedModeActivated){
+        e.currentTarget.remove();
+    }
+
+
+}
+
+function handleLockUnlockClick(e, ticketArea){
+
+    console.log(e);
+
+    //if the ticket is locked : unlock 
+    // if the ticket is unlocked : lock 
+    
+    const isLocked = e.target.classList.contains("fa-lock");
+
+    if(isLocked){
+            //remove the fa-lock 
+            //add the fa-unlock 
+        e.target.classList.remove("fa-lock");
+        e.target.classList.add("fa-unlock");
+        ticketArea.setAttribute("contenteditable","true");
+
+    }else{
+            //add the fa-lock 
+            //remove the fa-unlock 
+        e.target.classList.add("fa-lock");
+        e.target.classList.remove("fa-unlock");
+        ticketArea.setAttribute("contenteditable","false");
+    }
 }
 
 
@@ -163,3 +250,11 @@ for(let i=0;i<priorityMenuColors.length;i++){
 
     })
 }
+
+
+
+
+
+//e.target : is the elemnt which is actully clicked 
+//e.currentTarget : on which the event listenr is actujally being apploed 
+

@@ -5,6 +5,7 @@
     --green:lightgreen;
     --light:white;
     --dark:black;
+    --red:red;
 }
 
 .toolbox {
@@ -53,6 +54,10 @@
 }
 .light{
     background-color: var(--light);
+}
+
+.red {
+    color: var(--red);
 }
 
 .action-btn {
