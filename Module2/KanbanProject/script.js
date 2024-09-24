@@ -9,6 +9,41 @@ let isDeletedModeActivated = false;
 const colors = ["pink","blue","purple","green"];
 
 
+loadExistingTicketsOnUI();
+
+
+function loadExistingTicketsOnUI(){
+
+    //get all tickets
+    const existingTickets = fetchExistingTickets();
+
+    //display
+    displayTickets(existingTickets);
+}
+
+
+function displayTickets(tickets){
+
+
+   for(let i=0;i<tickets.length;i++){
+
+    const ticket = tickets[i];
+
+    console.log(ticket);
+
+    const {id, color, content} =ticket;
+
+    createTicket(id, color, content, false);
+
+   }
+
+}
+
+
+
+
+
+
 addBtn.addEventListener("click",()=>{
     model.style.display = "flex";
 })
@@ -74,7 +109,10 @@ model.addEventListener("keypress",(e)=>{
     const content = textArea.value;
     console.log(content);
 
-    createTicket(cColor, content);
+    const ticketId = randomTicketId();
+
+
+    createTicket(ticketId, cColor, content, true);
 
 
     //clear the textarea
@@ -87,14 +125,13 @@ model.addEventListener("keypress",(e)=>{
 })
 
 
-function createTicket(color, content){
+function createTicket(ticketId, color, content, addToLocalStorage){
+
     console.log(`create a new ticket with color : ${color} and content : ${content}`)
 
     const ticketContainer = document.createElement("div");
     ticketContainer.setAttribute("class","ticket_cont");
 
-
-    const ticketId = randomTicketId();
 
     //innerHTML
     ticketContainer.innerHTML = `
@@ -115,8 +152,63 @@ function createTicket(color, content){
     ticketContainer.addEventListener("click",handleTicketContainerClick);
     ticketPriority.addEventListener("click",handleTicketPriority);
 
+
+    //add to UI
     pendingContainer.appendChild(ticketContainer);
+
+
+    if(addToLocalStorage){
+
+          const newTicket = {
+        id:ticketId,
+        color:color,
+        content:content
+    }
+
+    //add to localStorage
+    addToExistingTicketsInLocalStorage(newTicket);
+
+    }
+
+  
 }
+
+
+function addToExistingTicketsInLocalStorage(newTicket){
+    
+    //Get all tickets 
+    const existingTickets = fetchExistingTickets();
+
+    //push a new ticket to existing 
+    existingTickets.push(newTicket);
+
+    //save all tickets 
+    saveTickets(existingTickets);
+
+}
+
+function fetchExistingTickets(){
+
+    const existingTickets =  localStorage.getItem("kanbanTickets");
+
+    const existingTicketsJS = JSON.parse(existingTickets);
+
+    if(existingTicketsJS==null){
+        return [];
+    }
+
+    return existingTicketsJS;
+}
+
+
+function saveTickets(newTickets){
+
+    const newTicketsJSON = JSON.stringify(newTickets);
+
+    localStorage.setItem("kanbanTickets", newTicketsJSON);
+}
+
+
 
 function handleTicketPriority(e){
 
@@ -184,7 +276,12 @@ function handleLockUnlockClick(e, ticketArea){
 
 function randomTicketId(){
 
-    return "wkfjbkfbwjkf2345"
+    const uid = new ShortUniqueId({ length: 10 });
+
+    const ticketId = uid.rnd();
+
+    return ticketId;
+    
 }
 
 
@@ -257,4 +354,8 @@ for(let i=0;i<priorityMenuColors.length;i++){
 
 //e.target : is the elemnt which is actully clicked 
 //e.currentTarget : on which the event listenr is actujally being apploed 
+
+
+
+
 
