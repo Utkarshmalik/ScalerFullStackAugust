@@ -1,0 +1,25 @@
+
+.main{
+
+    display: flex;
+    border: 1px solid black;
+    height: 98vh;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.filled{
+    color: gold;
+}
+
+.star {
+
+    font-size: 30px;
+}
+
+.stars{
+
+    padding: 2px;
+}
