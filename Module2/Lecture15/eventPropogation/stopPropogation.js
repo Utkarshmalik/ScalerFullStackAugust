@@ -29,6 +29,15 @@ child.addEventListener("click",function(e){
 
     console.log(e.target, e.currentTarget);
 
-     e.stopPropagation();
+    
+},false)
+
+
+child.addEventListener("click",function(e){
+
+    console.log("Child clicked");
+
+    console.log(e.target, e.currentTarget);
+
     
 },false)

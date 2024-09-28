@@ -1,0 +1,9 @@
+Brief description about the Project
+
+Nested Comment System
+
+build a nested comment system where users can leave comments on a post. Each comment can have replies, creating a nested structure. Users should be able to reply to comments and collapse/expand comment threads.
+
+Nested Comment System: Overview
+
+A nested comment system allows users to leave comments on a post, and each comment can have replies, forming a threaded or hierarchical structure. Users should also be able to collapse and expand comment threads for better readability. This is commonly seen on social media platforms and discussion forums.
