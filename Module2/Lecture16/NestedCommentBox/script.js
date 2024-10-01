@@ -67,3 +67,14 @@ commentsContainer.addEventListener("click",(e)=>{
     }
 
 })
+
+
+const comments = [
+    {
+        id:"123",
+        text:"Hii",
+        replies:["Hi","Hello"]
+    }
+];
+
+
