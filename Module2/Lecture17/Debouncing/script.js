@@ -45,20 +45,20 @@ function makeANetworkcall(e){
 
 //how using the concept of timerId , we have maintained  a timer in our system 
 
-// let timerId = setTimeout(()=>{
-//     console.log("Hello");
-// },3000)
+let timerId = setTimeout(()=>{
+    console.log("Hello");
+},3000)
 
-// setTimeout(()=>{
-//     clearTimeout(timerId);
-//     timerId=null;
-// },1000)
+setTimeout(()=>{
+    clearTimeout(timerId);
+    timerId=null;
+},1000)
 
-// setTimeout(()=>{
-//     console.log(timerId);
-// },2000)
+setTimeout(()=>{
+    console.log(timerId);
+},2000)
 
-// console.log(timerId);
+console.log(timerId);
 
 
 //timerId is NULL : timer is not null 

@@ -1,0 +1,5 @@
+
+non strict node 
+
+Scenario 1 : global context : window 
+Scenario 2 : inside a function 

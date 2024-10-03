@@ -1,0 +1,34 @@
+Debouncing and throttling are both techniques used to control how often a function is executed in response to an event
+
+When to Use Debouncing
+
+Debouncing ensures that a function is only executed once after a specified delay, no matter how many times an event is triggered. It is useful when you want to wait until the user has stopped triggering events before taking action.
+
+Ideal for:
+
+Search input fields: When a user types in a search box, you only want to send the search request once the user has stopped typing.
+
+Window resizing: When resizing a window, you may want to wait until the user has finished resizing before adjusting the layout.
+
+Form validation on user input: You may want to validate a field only after the user has stopped typing to avoid validating for every keystroke.
+
+
+When to Use Throttling
+
+Throttling limits the execution of a function to once every specified interval, regardless of how often the event occurs. This is useful when you want to ensure a function is executed at regular intervals, even if the event is triggered continuously.
+
+Ideal for:
+
+Button click: In situations where a button could be clicked multiple times in quick succession, throttling ensures that the action only happens once every set interval.
+
+API rate limiting: When sending requests to an API, throttling can prevent too many requests from being sent in a short time, adhering to rate limits.
+
+
+
+Debouncing: Use when you want to wait until a user action has "settled" (e.g., input, resizing).
+Throttling: Use when you want to limit the execution rate of a function, even when an event is fired continuously (e.g., scroll, button clicks).
+
+
+
+
+
