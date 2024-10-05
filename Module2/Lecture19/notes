@@ -1,0 +1,13 @@
+What are Constructor Functions and Why Use Them?
+
+Constructor functions in JavaScript are a way to create multiple objects with the same structure, methods, and properties. They act like a blueprint for creating instances of a particular type of object.
+
+
+
+this keyword in constcutor functons points to the new instance that  is being created for that cf 
+
+
+Inheritence 
+
+
+
