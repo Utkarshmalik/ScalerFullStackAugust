@@ -1,11 +1,15 @@
 
+
+
+
 Function.prototype.customApply = function(requiredObject,args){
  
     const functionToExecute = this;
 
     requiredObject.fn  = functionToExecute;
-
+    
     requiredObject.fn(...args);
+    
 
     delete requiredObject.fn;
 

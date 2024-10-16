@@ -1,0 +1,12 @@
+Agenda 
+
+ Promise Combinators and their polyfills
+
+
+ What are Promise Combinators
+ Promise.all
+ Promise.allSettled
+ Promise.race
+ Promise.any
+
+ Polyfills of Each one of them
