@@ -1,0 +1,24 @@
+// In JavaScript, data types are split in two categories, and the computer treats each one differently. We have primitive data types and reference data types.
+
+
+// Primitive DataTypes 
+
+// These data types are pretty simple, and are sometimes treated as the lowest level of implementation of a programming language. They are not objects, and do not have methods.
+
+// Examples of such data types are numbers, strings, booleans, null, and undefined.
+
+
+// How are Primitive Datatypes Stored in Memory
+
+
+// When you declare a primitive data type in JavaScript, it is stored on a stack. A stack is a simple data structure that the computer uses to store and retrieve data quickly.
+
+// Reference Datatypes
+
+// Reference data types, unlike primitive data types, are dynamic in nature. That is, they do not have a fixed size.
+
+// Most of them are considered as objects, and therefore have methods. Examples of such data types include arrays, functions, collections, and all other types of objects.
+
+// The difference comes in when the computer has to store a reference data type. When you create a variable and assign it a value that is a reference data type, the computer does not directly store that data type in that variable (as is the case with primitive types).
+
+
