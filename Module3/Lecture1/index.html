@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="root"></div>
+
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+</body>
+
+<script>
+      const root = document.getElementById("root");
+
+            
+    // Create an element using React.createElement
+        // React.createElement takes at least three arguments:
+        // 1. The tag name of the HTML element to create
+        // 2. The properties of the element (or null if none) Adding null here for now we will discuss props later
+        // 3. The children of this element (or text content)
+    const headingElement = React.createElement('h1', null, 'Hello from React');
+
+    // const headingElement = document.createElement("h1");
+    // headingElement.innerHTML = "Hello from JS";
+    // root.appendChild(headingElement);
+
+    ReactDOM.render(headingElement, root);
+
+    
+</script>
+
+</html>
