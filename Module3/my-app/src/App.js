@@ -1,12 +1,25 @@
-import UserList from "./Components/UserList";
+import Login from "./Components/Login/Login";
+import NavbarComp from "./Components/Navbar/Navbar";
+import UserList from "./Components/UserList/UserList";
 
 
 function App() {
 
+  const isLoggedInStr = localStorage.getItem("isLoggedIn");
+  const isLoggedIn = JSON.parse(isLoggedInStr);
+
+  console.log(typeof  isLoggedIn);
+
   return <div> 
-    <h1>     Hey we are learning React today </h1>
-    
-    <UserList />
+
+    <NavbarComp/>
+
+    {
+      (isLoggedIn) ? <UserList/> : <Login/>
+
+    }
+
+
 
   </div>
   
@@ -15,6 +28,12 @@ function App() {
 export default App;
 
 
+
+
+
+
+//Conditional Rendering 
+// Conditional rendering in React is a powerful way to dynamically display content or components based on specific conditions. By utilizing props and the ternary operator, we can efficiently control what is rendered, making our React applications more dynamic and responsive to different states. This allows us to create a smooth and intuitive user experience, regardless of the specific requirements.
 
 
 

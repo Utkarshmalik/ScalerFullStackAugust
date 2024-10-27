@@ -1,0 +1,15 @@
+
+.user{
+
+    border:3px solid black;
+    width: 340px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    padding: 10px;
+
+    font-weight: bolder;
+    font-size: 15px;
+}

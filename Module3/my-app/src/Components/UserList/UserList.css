@@ -1,0 +1,16 @@
+
+
+.userList{
+
+ padding: 20px; 
+ text-align: center;  
+
+}
+.users{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap:10px;
+
+}
