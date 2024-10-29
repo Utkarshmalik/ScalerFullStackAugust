@@ -1,7 +1,8 @@
 import Login from "./Components/Login/Login";
 import NavbarComp from "./Components/Navbar/Navbar";
 import UserList from "./Components/UserList/UserList";
-
+import Counter from "./Components/Counter/Counter";
+import Form from "./Components/Form/Form";
 
 function App() {
 
@@ -12,12 +13,16 @@ function App() {
 
   return <div> 
 
-    <NavbarComp/>
+    {/* <NavbarComp/>
+
+    <Form/> */}
+
+    {/* <Counter/> */}
 
     {
       (isLoggedIn) ? <UserList/> : <Login/>
 
-    }
+    } 
 
 
 

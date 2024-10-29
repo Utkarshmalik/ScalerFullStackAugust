@@ -5,10 +5,7 @@ import "./User.css";
 
 function User(props){
 
-    function onDeleteButtonClick(e,id){
-        console.log("Delete Button Clicked for userId: ",id);
-    }
-  
+
 
     const userData = props.userData;
 
@@ -19,7 +16,8 @@ function User(props){
             <p > Gender {userData.gender} </p>
             <p> Age: {userData.age}  </p>
             <p > Email: {userData.email} </p>
-            <Button onClick={(e)=> onDeleteButtonClick(e,userData.id)}  variant="danger">Delete</Button>{' '}
+            <Button onClick={(e)=> props.onDeleteUser(e,userData.id)}
+              variant="danger">Delete</Button>{' '}
         </div>
 }
 
