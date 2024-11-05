@@ -1,14 +1,14 @@
 import User from "../User/User";
-import usersData from "../../data/users.json";
 import "./UserList.css";
 import Navbar from "../Navbar/Navbar";
-import { useState } from "react";
 import Button from "react-bootstrap/esm/Button";
+import NavbarComp from "../Navbar/Navbar";
 
 
-function UserList(){
+function UserList(props){
 
-    const [users, setUsers] = useState(usersData.users);
+    const {users, setUsers} = props;
+    
 
     function onSortByAge(){
 
@@ -33,6 +33,8 @@ function UserList(){
   
 
     return <div className="userList" >
+      
+      <NavbarComp/>
 
         
         <h2> Users </h2>

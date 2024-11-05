@@ -1,6 +1,7 @@
 import Navbar from 'react-bootstrap/Navbar';
 import Container from 'react-bootstrap/Container';
-
+import Button from 'react-bootstrap/esm/Button';
+import { Link } from 'react-router-dom';
 
 function NavbarComp(){
     return  <Navbar bg="dark" data-bs-theme="dark" className="bg-body-tertiary">
@@ -9,9 +10,18 @@ function NavbarComp(){
         <Navbar.Toggle />
         <Navbar.Collapse className="justify-content-end">
           <Navbar.Text>
-            {/* Signed in as: <a href="#login">Utkarsh </a> */}
           </Navbar.Text>
         </Navbar.Collapse>
+
+        <Link to="/form"> <Button> Create New User </Button> </Link>
+        <Link to="/counter"> <Button> Counter Page </Button> </Link>
+        <Link to="/login"> <Button> Logout </Button> </Link>
+
+       
+        
+        
+
+
       </Container>
     </Navbar>
 

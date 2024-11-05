@@ -2,28 +2,42 @@ import Login from "./Components/Login/Login";
 import NavbarComp from "./Components/Navbar/Navbar";
 import UserList from "./Components/UserList/UserList";
 import Counter from "./Components/Counter/Counter";
-import Form from "./Components/Form/Form";
+import Form from "./Components/UserForm/UserForm"
+import { BrowserRouter,Routes, Route} from "react-router-dom";
+import { useState } from "react";
+import usersData from "./data/users.json"
+import UserPage from "./Components/UserPage/UserPage";
+
 
 function App() {
 
   const isLoggedInStr = localStorage.getItem("isLoggedIn");
   const isLoggedIn = JSON.parse(isLoggedInStr);
 
+    const [users, setUsers] = useState(usersData.users);
+
+    function onFormSubmit(newUser){
+
+      const updatedUsers = [newUser,...users];
+
+      setUsers(updatedUsers);
+    }
+
+
   console.log(typeof  isLoggedIn);
 
   return <div> 
 
-    {/* <NavbarComp/>
+    <BrowserRouter>
+    <Routes>
+      <Route path="/" element={ <UserList users={users} setUsers={setUsers} /> } />
+      <Route path="/login" element={ <Login/> } />
+      <Route path="/counter" element={ <Counter/> } />
+      <Route path="/form" element={ <Form onFormSubmit={onFormSubmit} /> } />
+      <Route path="/users/:userId" element={<UserPage/>} />
+    </Routes>
 
-    <Form/> */}
-
-    {/* <Counter/> */}
-
-    {
-      (isLoggedIn) ? <UserList/> : <Login/>
-
-    } 
-
+    </BrowserRouter>
 
 
   </div>
