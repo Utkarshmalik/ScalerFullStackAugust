@@ -1,0 +1,12 @@
+
+1. Development Speed
+
+Vite: Uses a technique called ES Module (ESM) loading in development, where modules are requested individually instead of being bundled upfront. This leads to almost instantaneous startup times, even with large projects.
+
+CRA: Uses Webpack, which bundles everything at startup. As projects grow, this bundling process takes more time, resulting in slower server start times and live reload delays.
+
+2. Build Time
+
+Vite: Internally uses Rollup for production builds, optimizing the bundling process to produce smaller and more efficient bundles.
+
+CRA: Uses Webpack for production builds, which can be slower due to its bundling strategies and additional configuration.

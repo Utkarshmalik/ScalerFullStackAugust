@@ -3,11 +3,12 @@ import "./UserList.css";
 import Navbar from "../Navbar/Navbar";
 import Button from "react-bootstrap/esm/Button";
 import NavbarComp from "../Navbar/Navbar";
+import SpinnerComp from "../Common/Spinner/Spinner";
 
 
 function UserList(props){
 
-    const {users, setUsers} = props;
+    const {users, setUsers, isLoading} = props;
     
 
     function onSortByAge(){
@@ -39,17 +40,25 @@ function UserList(props){
         
         <h2> Users </h2>
 
+
+        {
+            (isLoading) ?  <SpinnerComp/> :   <div >
+
         <Button onClick={onSortByAge}> Sort By age  </Button>
 
-        <div className="users" >
+        <div className="users">
 
             {
                     users.map((user)=>{
                         return <User onDeleteUser={onDeleteButtonClick}   key={user.id} userData={user}   />
                     })
-                }
+            }
+        </div>
 
         </div>
+        }
+
+       
       
 
     </div>

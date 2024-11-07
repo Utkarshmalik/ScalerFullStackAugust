@@ -4,7 +4,7 @@ import UserList from "./Components/UserList/UserList";
 import Counter from "./Components/Counter/Counter";
 import Form from "./Components/UserForm/UserForm"
 import { BrowserRouter,Routes, Route} from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import usersData from "./data/users.json"
 import UserPage from "./Components/UserPage/UserPage";
 
@@ -14,7 +14,24 @@ function App() {
   const isLoggedInStr = localStorage.getItem("isLoggedIn");
   const isLoggedIn = JSON.parse(isLoggedInStr);
 
-    const [users, setUsers] = useState(usersData.users);
+
+    const [users, setUsers] = useState(null);
+    const [isLoading, setIsLoading] = useState(true);
+
+    //componentDidMount + componentDidUpdate
+    useEffect(async ()=>{
+      console.log("I am inside useEffect"); 
+
+       const usersRes = await fetch("https://dummyjson.com/users");
+       const usersData = await usersRes.json();
+
+       console.log("Fetched results ",usersData.users);
+
+        setUsers(usersData.users);
+       setIsLoading(false);
+    },[])
+
+
 
     function onFormSubmit(newUser){
 
@@ -24,13 +41,13 @@ function App() {
     }
 
 
-  console.log(typeof  isLoggedIn);
+  console.log("Rendering App.Js compoent");
 
   return <div> 
 
     <BrowserRouter>
     <Routes>
-      <Route path="/" element={ <UserList users={users} setUsers={setUsers} /> } />
+      <Route path="/" element={ <UserList isLoading={isLoading} users={users} setUsers={setUsers} /> } />
       <Route path="/login" element={ <Login/> } />
       <Route path="/counter" element={ <Counter/> } />
       <Route path="/form" element={ <Form onFormSubmit={onFormSubmit} /> } />
