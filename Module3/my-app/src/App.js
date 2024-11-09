@@ -8,7 +8,6 @@ import { useEffect, useState } from "react";
 import usersData from "./data/users.json"
 import UserPage from "./Components/UserPage/UserPage";
 
-
 function App() {
 
   const isLoggedInStr = localStorage.getItem("isLoggedIn");
@@ -17,11 +16,13 @@ function App() {
 
     const [users, setUsers] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
+    const [exceptionMessage, setExceptionMessage] = useState(null);
 
     //componentDidMount + componentDidUpdate
     useEffect(async ()=>{
       console.log("I am inside useEffect"); 
 
+      try{
        const usersRes = await fetch("https://dummyjson.com/users");
        const usersData = await usersRes.json();
 
@@ -29,6 +30,12 @@ function App() {
 
         setUsers(usersData.users);
        setIsLoading(false);
+      }
+      catch(e){
+         setIsLoading(false);
+         setExceptionMessage(e.message);
+
+      }
     },[])
 
 
@@ -47,7 +54,7 @@ function App() {
 
     <BrowserRouter>
     <Routes>
-      <Route path="/" element={ <UserList isLoading={isLoading} users={users} setUsers={setUsers} /> } />
+      <Route path="/" element={ <UserList exceptionMessage={exceptionMessage} isLoading={isLoading} users={users} setUsers={setUsers} /> } />
       <Route path="/login" element={ <Login/> } />
       <Route path="/counter" element={ <Counter/> } />
       <Route path="/form" element={ <Form onFormSubmit={onFormSubmit} /> } />
