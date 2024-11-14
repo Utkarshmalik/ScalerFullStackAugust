@@ -11,7 +11,6 @@ function Movies(props){
     const [loading,setLoading]  = useState(true);
     const [pageNumber , setPageNumber] = useState(1);
 
-        const {addToWatchList, removeFromWatchList, watchList} = props;
 
 
     const fetchMovieData = async ()=>{
@@ -70,7 +69,7 @@ function Movies(props){
                 {
                     movies.map((movieObj)=>{
 
-                        return <MovieCard watchList={watchList} addToWatchList={addToWatchList} removeFromWatchList={removeFromWatchList} movieObj={movieObj} />
+                        return <MovieCard movieObj={movieObj} />
 
                     })
                 }
