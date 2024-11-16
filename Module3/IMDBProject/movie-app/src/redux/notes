@@ -1,0 +1,8 @@
+1. configureStore
+
+configureStore is a utility that helps set up a Redux store with sensible defaults. It automatically includes middleware like Redux Thunk (for handling asynchronous actions) and Redux DevTools for debugging.
+
+
+2. createSlice
+
+createSlice is a function that helps you define actions and reducers in a more concise way.  It automatically generates action creators and action types based on the reducers you provide. This greatly reduces boilerplate code.

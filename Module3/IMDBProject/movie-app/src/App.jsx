@@ -6,7 +6,10 @@ import {BrowserRouter, Routes , Route } from "react-router-dom"
 import Home from './Pages/Home/Home'
 import WatchList from './Pages/WatchList/WatchList'
 import Navbar from './Components/Navbar/Navbar'
-
+import Counter from './Pages/Counter/Counter'
+import {Provider} from "react-redux";
+import { store } from './redux/store/store'
+import TodoList from './Pages/TodoList/TodoList'
 
 export const WatchListContext = React.createContext();
 
@@ -53,15 +56,19 @@ function App() {
 
   return (
     <div  >
+      <Provider store={store} >
       <WatchListContext.Provider  value={{watchList, addToWatchList, removeFromWatchList}}  >
      <BrowserRouter>
      <Navbar/>
      <Routes>
       <Route path='/' element={<Home  />} />
       <Route path='/watchlist' element={<WatchList  />} />
+      <Route path='/counter' element={<Counter  />} />
+      <Route path='/todo' element={<TodoList  />} />
      </Routes>
      </BrowserRouter>
       </WatchListContext.Provider>
+      </Provider>
     </div>
   )
 }
