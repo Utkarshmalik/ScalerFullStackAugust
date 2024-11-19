@@ -1,12 +1,16 @@
-import Login from "./Components/Login/Login";
 import NavbarComp from "./Components/Navbar/Navbar";
 import UserList from "./Components/UserList/UserList";
-import Counter from "./Components/Counter/Counter";
-import Form from "./Components/UserForm/UserForm"
 import { BrowserRouter,Routes, Route} from "react-router-dom";
-import { useEffect, useState } from "react";
+import { Suspense, lazy, useEffect, useState } from "react";
 import usersData from "./data/users.json"
-import UserPage from "./Components/UserPage/UserPage";
+
+
+const Counter = lazy(()=>import("./Components/Counter/Counter"));
+const Form = lazy(()=>import("./Components/UserForm/UserForm"));
+const UserPage = lazy(()=>import("./Components/UserPage/UserPage"));
+const Login = lazy(()=>import("./Components/Login/Login"));
+const TodoList = lazy(()=>import("./Components/TodoList/TodoList"));
+
 
 function App() {
 
@@ -55,10 +59,41 @@ function App() {
     <BrowserRouter>
     <Routes>
       <Route path="/" element={ <UserList exceptionMessage={exceptionMessage} isLoading={isLoading} users={users} setUsers={setUsers} /> } />
-      <Route path="/login" element={ <Login/> } />
-      <Route path="/counter" element={ <Counter/> } />
-      <Route path="/form" element={ <Form onFormSubmit={onFormSubmit} /> } />
-      <Route path="/users/:userId" element={<UserPage/>} />
+      <Route path="/login" element={
+          <Suspense fallback={<div> Loading Login Component .... </div>}>
+        <Login/> 
+        </Suspense>
+        
+        } />
+      <Route path="/counter" element={ 
+
+        <Suspense fallback={<div> Loading Counter Component .... </div>}>
+      <Counter/>
+      </Suspense>
+
+      
+      } />
+      <Route path="/form" element={ 
+      <Suspense fallback={<div> Loading Form Component .... </div>}>
+      <Form onFormSubmit={onFormSubmit} /> 
+      </Suspense>
+      
+      } />
+      <Route path="/users/:userId" element={
+      
+      <Suspense fallback={<div> Loading User Component .... </div>}>
+      <UserPage/>
+      </Suspense>
+      
+      } />
+
+           <Route path="/todo" element={
+      
+      <Suspense fallback={<div> Loading Todo Component .... </div>}>
+      <TodoList/>
+      </Suspense>
+      
+      } />
     </Routes>
 
     </BrowserRouter>

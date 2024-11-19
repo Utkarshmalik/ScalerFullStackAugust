@@ -1,5 +1,25 @@
 import Button from "react-bootstrap/esm/Button";
-import { useState } from "react";
+import { useMemo, useState } from "react";
+
+
+const generateLargeArray =  ()=>{
+
+    console.log("Generating Large Array");
+
+    const largeArray=[];
+
+
+    for(let i=0;i<1000000;i++){
+        largeArray.push(i);
+    }
+
+    return largeArray;
+}
+
+const sumArr = (arr)=>{
+      console.log('Calculating sum...');
+    return arr.reduce((acc,curr)=>acc+curr,0);
+}
 
 function Counter(){
 
@@ -7,6 +27,12 @@ function Counter(){
 
 
     const [count,setCount] = useState(0);
+
+    // const largeArray = generateLargeArray();
+    const largeArray = useMemo(()=>generateLargeArray(),[]);
+    
+    // const sum = sumArr(largeArray);
+    const sum = useMemo(()=>sumArr(largeArray),[largeArray]);
 
 
     function onIncrement(){
@@ -24,6 +50,8 @@ function Counter(){
     return     <div style={{height:"300px"}}>
 
     <h1> Counter App </h1>
+
+    <h2> Sum : {sum} </h2>
 
      <p> Count :  {count} </p>
 
