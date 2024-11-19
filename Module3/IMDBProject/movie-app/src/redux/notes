@@ -6,3 +6,28 @@ configureStore is a utility that helps set up a Redux store with sensible defaul
 2. createSlice
 
 createSlice is a function that helps you define actions and reducers in a more concise way.  It automatically generates action creators and action types based on the reducers you provide. This greatly reduces boilerplate code.
+
+
+
+createAsyncThunk is a utility provided by Redux Toolkit to handle asynchronous logic like API calls. It simplifies the process of dispatching actions for async operations (e.g., fetching data from a server) and managing the resulting state.
+
+Key Features
+
+Automatically generates three lifecycle action types for an async operation:
+
+pending: The operation has started.
+fulfilled: The operation completed successfully.
+rejected: The operation failed.
+
+Works seamlessly with Redux Toolkit's slices to manage state transitions during these lifecycles.
+
+
+
+
+What is extraReducers?
+
+extraReducers is a special field in a Redux Toolkit slice that allows you to handle actions outside the slice's own reducers.
+
+Why Do We Need extraReducers?
+To handle the lifecycle actions (pending, fulfilled, rejected) of async thunks created using createAsyncThunk.
+To respond to actions that are not part of the slice's reducers.

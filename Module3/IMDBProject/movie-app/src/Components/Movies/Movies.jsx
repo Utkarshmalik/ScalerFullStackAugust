@@ -3,52 +3,51 @@ import Spinner from "../Common/Spinner/Spinner";
 import axios from "axios";
 import MovieCard from "../MovieCard/MovieCard";
 import Pagination from "../Pagination/Pagination";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchMovies } from "../../redux/slice/moviesSlice";
 
 
 function Movies(props){
 
-    const [movies,setMovies]  = useState([]);
-    const [loading,setLoading]  = useState(true);
-    const [pageNumber , setPageNumber] = useState(1);
+    // const [movies,setMovies]  = useState([]);
+    // const [loading,setLoading]  = useState(true);
+    // const [pageNumber , setPageNumber] = useState(1);
 
+    const {movies,loading,pageNumber} = useSelector((state)=>state.moviesState);
+    const dispatch = useDispatch();
 
+    // const fetchMovieData = async ()=>{
 
-    const fetchMovieData = async ()=>{
-
-        setLoading(true);
+    //     setLoading(true);
         
-       const res = await axios.get(`https://api.themoviedb.org/3/trending/movie/day?api_key=1439d8ee0449071c8283dae52000692e&page=${pageNumber}`);
-       console.log(res);
-       let movies = res.data.results;
+    //    const res = await axios.get(`https://api.themoviedb.org/3/trending/movie/day?api_key=1439d8ee0449071c8283dae52000692e&page=${pageNumber}`);
+    //    console.log(res);
+    //    let movies = res.data.results;
 
-       setMovies(movies);
-       setLoading(false);
+    //    setMovies(movies);
+    //    setLoading(false);
 
-    }
+    // }
 
        //ComponentDidMount (after first initial render) + ComponentDidUpdate(Every time page Number state is updated )
         useEffect(()=>{
-            fetchMovieData();
-        },[pageNumber]);
+
+            dispatch(fetchMovies(pageNumber));
+
+        },[dispatch, pageNumber]);
 
 
 
         const previousPageFn = function(){
 
-            //i need to make a API call for page=page-1
-
-
             if(pageNumber>1){
-                setPageNumber(pageNumber-1);
+                dispatch(previousPageFn());
             }
 
         }
         
         const nextPageFn = function(){
-
-            //i need to make a API call for page=page+1
-
-            setPageNumber(pageNumber+1);
+            dispatch(nextPageFn());
         }
 
 
