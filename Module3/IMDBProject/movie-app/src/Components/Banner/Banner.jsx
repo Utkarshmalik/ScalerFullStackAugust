@@ -3,6 +3,7 @@ import axios from "axios";
 
 function Banner(){
 
+
     const [bannerImage, setBannerImage] = useState("https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Placeholder_view_vector.svg/991px-Placeholder_view_vector.svg.png");
       const [movieTitle, setMovieTitle] = useState("");
 

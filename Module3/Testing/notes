@@ -1,0 +1,65 @@
+
+
+
+// alpha/beta  -> gamma (pre prod) -> production 
+
+
+Unit Testing
+
+Purpose: Unit testing focuses on testing individual components or functions of the software in isolation. The goal is to validate that each unit works as intended and that it performs the task it's designed for correctly.
+Scope: It isolates a single function, method, or class to ensure that it behaves as expected under different conditions.
+
+function calculateRectangleArea(length, width) {
+    return length * width;
+}
+
+test('should calculate area of rectangle correctly', () => {
+    expect(calculateRectangleArea(3, 4)).toBe(12);
+});
+
+
+Tools: JUnit, NUnit, Mocha, Jest, xUnit
+
+
+
+Integration Testing
+
+Purpose: Integration testing verifies that different components or modules of the system work together as expected. It focuses on the interaction between integrated components, such as the interaction between a web application and a database, or between microservices.
+
+
+Scope: Testing several modules or systems that are expected to work together to perform a feature.
+
+
+
+
+// TDD : Test Driven Development 
+
+
+Test-Driven Development (TDD) is a software development process where developers write automated test cases before writing the actual code to pass those tests. 
+
+test('should calculate area of rectangle correctly', () => {
+  expect(calculateRectangleArea(3, 4)).toBe(12);
+});
+
+
+test('should calculate area of rectangle correctly', () => {
+  expect(calculateRectangleArea(5, 10)).toBe(50);
+});
+
+
+test('should calculate area of rectangle correctly', () => {
+  expect(calculateRectangleArea(5, 50)).toBe(250);
+});
+
+
+function calculateRectangleArea(length, width) {
+  return length * width;
+}
+
+
+
+
+
+// Need for Unit Testing
+
+

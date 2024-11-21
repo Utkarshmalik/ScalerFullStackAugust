@@ -4,11 +4,13 @@ import axios from "axios";
 
 //API call to fetch movies 
 
+console.log(import.meta.env);
+
 export const fetchMovies = createAsyncThunk(
     'movies/fetchMovies',
     async (pageNumber)=>{
         console.log("making an API call");
-     const res = await fetch(`https://api.themoviedb.org/3/trending/movie/day?api_key=1439d8ee0449071c8283dae52000692e&page=${pageNumber}`); 
+     const res = await fetch(`${import.meta.env.VITE_MOVIES_BACKEND_URL}${pageNumber}`); 
      if(!res.ok){
         throw new Error("Failed to fetch movies");
      }
