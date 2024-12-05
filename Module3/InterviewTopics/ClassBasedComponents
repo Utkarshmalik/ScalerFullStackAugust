@@ -1,0 +1,15 @@
+Component
+
+Functional Components : components without state
+Class based Components (legacy) : components we need to maintian state
+
+//No way to maintain a state in Functional Components
+
+Class Based Components :
+
+1. Difficult to Minify
+2. Good understand of JS
+
+Itroduction of Hooks
+
+useState, useEffect that allow you to do state management even in functional components

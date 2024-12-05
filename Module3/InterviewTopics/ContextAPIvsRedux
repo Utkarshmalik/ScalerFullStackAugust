@@ -1,0 +1,26 @@
+
+
+State Management 
+
+When to use Context APIs 
+
+1.Simple State Management Needs 
+Eg: Global states like Theme , user authenticated , Lanugage Prefrences 
+
+2. Static or less frequenlty updated 
+
+Redux
+
+1.Complex State Statement
+
+
+1. Complex Applications : that require centralised state Management
+2. Frequent or complex state updates 
+
+
+Setup : Context 
+Perfomance : Redux
+
+
+
+

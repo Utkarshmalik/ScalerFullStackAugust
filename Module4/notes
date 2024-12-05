@@ -1,0 +1,69 @@
+1. Non-Blocking I/O Model: Node.js is designed around a non-blocking, event-driven architecture. This means it can efficiently handle multiple I/O operations concurrently without blocking the execution of other tasks. When performing heavy I/O operations, such as reading and writing files, making network requests, or interacting with databases, Node.js can initiate these operations and continue executing other code while waiting for the I/O operations to complete. This asynchronous approach is highly advantageous for scenarios with many concurrent I/O tasks.
+
+
+2. Scalability
+
+3. Low Overhead: Node.js has a relatively small memory footprint compared to some other web server technologies. This makes it well-suited for small server applications where resource utilization needs to be efficient. You can run multiple Node.js instances on a single server without consuming excessive system resources.
+
+
+4.Rich Ecosystem: Node.js has a vast ecosystem of libraries and modules available through npm, which can simplify the development of web servers for various purposes. Developers can find packages to handle specific I/O tasks, such as file uploads, database connections, and HTTP requests, making it easier to build web servers tailored to their needs.
+
+
+
+
+Intro to nodejs and backend development
+Intro to API, express and CRUD
+Intro to Mongodb and CRUD operation
+Rest API ,Imp API features and integration BMS to frontend
+Data validation, aliasing, pre-post hook
+Login Signup,Hashing Password
+Authentication,JWT and cookies
+cookies
+Authentication ,authorization and identification
+JWT algorithm
+Update,reset,forgot Password & sending email
+Sending Email using sendgrid and Nodemailer
+Integrating email sent on forget password
+Authorization , conditional flow of data , Admin dashboard
+Data Modelling and Theatre API and MVC
+converting the code into MVC architecture
+Build the Theater API
+
+Payment Gateway Integration and shows API
+security.
+
+Security
+Guidelines for security policy of your backend
+Types of attacks
+Denial of service attack
+XSS
+NoSQL injection
+Ways to secure
+Password hashing
+Adding rate limiter
+Adding required headers
+
+Testing, CORS and Deployment
+
+Websockets
+usecase of realtime applications
+How websocket are a better at real time communication
+Process of upgradation from HTTP -> websockets
+Websockets using node js
+Project : Chat application
+
+
+Backend Interview Prep-1
+Types of modules in nodejs
+Nodejs modules
+Nodejs streams
+Nodejs child process
+
+
+Backend Interview Prep-2
+first principles of Nodejs
+event driven
+single threaded
+asynchronous
+Understanding architecture of nodejs ->
+Identifying things that are async and those are sync

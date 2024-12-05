@@ -1,8 +1,9 @@
 import NavbarComp from "./Components/Navbar/Navbar";
 import UserList from "./Components/UserList/UserList";
 import { BrowserRouter,Routes, Route} from "react-router-dom";
-import { Suspense, lazy, useEffect, useState } from "react";
-import usersData from "./data/users.json"
+import { Suspense, lazy } from "react";
+import { useFetchData } from "./Hooks/useFetch";
+import AuthHoc from "./HOCs/AuthHoc";
 
 
 const Counter = lazy(()=>import("./Components/Counter/Counter"));
@@ -14,51 +15,26 @@ const TodoList = lazy(()=>import("./Components/TodoList/TodoList"));
 
 function App() {
 
-  const isLoggedInStr = localStorage.getItem("isLoggedIn");
-  const isLoggedIn = JSON.parse(isLoggedInStr);
-
-
-    const [users, setUsers] = useState(null);
-    const [isLoading, setIsLoading] = useState(true);
-    const [exceptionMessage, setExceptionMessage] = useState(null);
-
-    //componentDidMount + componentDidUpdate
-    useEffect(async ()=>{
-      console.log("I am inside useEffect"); 
-
-      try{
-       const usersRes = await fetch("https://dummyjson.com/users");
-       const usersData = await usersRes.json();
-
-       console.log("Fetched results ",usersData.users);
-
-        setUsers(usersData.users);
-       setIsLoading(false);
-      }
-      catch(e){
-         setIsLoading(false);
-         setExceptionMessage(e.message);
-
-      }
-    },[])
-
-
-
-    function onFormSubmit(newUser){
-
-      const updatedUsers = [newUser,...users];
-
-      setUsers(updatedUsers);
-    }
-
-
-  console.log("Rendering App.Js compoent");
+  const {users, setUsers, onFormSubmit,  exceptionMessage, isLoading} = useFetchData();
 
   return <div> 
 
     <BrowserRouter>
     <Routes>
-      <Route path="/" element={ <UserList exceptionMessage={exceptionMessage} isLoading={isLoading} users={users} setUsers={setUsers} /> } />
+      <Route path="/" element={ 
+
+
+      <AuthHoc>
+
+      <UserList exceptionMessage={exceptionMessage}
+       isLoading={isLoading} 
+      users={users} 
+      setUsers={setUsers} /> 
+
+      </AuthHoc>
+
+      
+      } />
       <Route path="/login" element={
           <Suspense fallback={<div> Loading Login Component .... </div>}>
         <Login/> 
@@ -66,9 +42,10 @@ function App() {
         
         } />
       <Route path="/counter" element={ 
-
         <Suspense fallback={<div> Loading Counter Component .... </div>}>
+      <AuthHoc>
       <Counter/>
+      </AuthHoc>
       </Suspense>
 
       
@@ -90,7 +67,10 @@ function App() {
            <Route path="/todo" element={
       
       <Suspense fallback={<div> Loading Todo Component .... </div>}>
-      <TodoList/>
+
+        <AuthHoc>
+          <TodoList/>
+        </AuthHoc>
       </Suspense>
       
       } />
@@ -104,6 +84,12 @@ function App() {
 }
 
 export default App;
+
+
+
+
+
+
 
 
 

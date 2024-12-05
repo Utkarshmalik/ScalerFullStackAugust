@@ -23,6 +23,11 @@ const sumArr = (arr)=>{
 
 function Counter(){
 
+        //check if a user is looged in via local storage 
+    // if logged in show the Counter page 
+    // else show the message components saying : yopu are unauthenticated
+
+
     console.log("Counter compoent is called");
 
 
