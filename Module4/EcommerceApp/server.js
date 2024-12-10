@@ -2,7 +2,7 @@
 
 // Import the Express module
 const express  = require("express");
-const { productsData } = require("./productDB");
+var { productsData } = require("./productDB");
 var bodyParser = require('body-parser')
 
 
@@ -49,7 +49,6 @@ app.get("/products/:id",(req,res)=>{
 
 
 
-
 //middlewares
 
 // When  a request comes to server   -------------  When to reaches the route
@@ -77,10 +76,62 @@ app.post("/products",(req,res)=>{
    catch(err){
         res.status(500).send({message:"Internal Server Error! Please try again"});
     }
-
 });
 
+app.delete("/products/:id",(req,res)=>{
 
+    const id = req.params.id;
+
+    try{
+
+    const requiredProduct = productsData.find(product => product.id == id);
+
+        if(!requiredProduct){
+            return res.status(404).send({message:`The passed productId : ${id} is invalid`});
+        }
+
+        //delete a product 
+        productsData = productsData.filter((product)=> product.id!=id);
+
+        res.status(200).send({message:`Product with id : ${id} has been deleted successfully`});
+   }
+      catch(err){
+        res.status(500).send({message:"Internal Server Error! Please try again"});
+    }
+
+})
+
+
+app.put("/products/:id",(req,res)=>{
+
+        const id = req.params.id;
+
+          try{ 
+            const requiredProduct = productsData.find(product => product.id == id);
+
+            if(!requiredProduct){
+                return res.status(404).send({message:`The passed productId : ${id} is invalid`});
+            }
+
+            const updatedProductDetails = req.body;
+            updatedProductDetails.id = id;
+
+            //delete 
+            const allProductsAfterFilter = productsData.filter((product)=> product.id!=id);
+            productsData = [...allProductsAfterFilter, updatedProductDetails];
+
+
+            return res.status(200).send(updatedProductDetails);
+
+          }
+          catch(err){
+             res.status(500).send({message:"Internal Server Error! Please try again"});
+
+          }
+})
+
+
+//CRUD
 
 
 const port = 3000;

@@ -1,0 +1,73 @@
+MongoDB : NoSQL
+
+SQL : Tables , Rows
+
+NOSQL : Collection , Documents
+
+Core Concepts:
+
+BSON (Binary JSON):
+MongoDB stores data in BSON format. Think of BSON as a way to represent data in a binary-encoded form, much like how JSON represents data in a text-based format. It's used by MongoDB to efficiently store and retrieve data.
+
+Collections:
+Collections are like containers or folders in which MongoDB stores related documents. You can think of them as similar to tables in a traditional SQL database, but with a more flexible structure.
+
+Documents:
+Documents are the basic unit of data in MongoDB. They're similar to rows or records in a table, but unlike SQL databases where each row follows a fixed schema, MongoDB documents can have varying structures within the same collection.
+
+Ecommerce
+
+Collection : products
+
+Documents: Product Information
+
+Each document represents a specific product and can have different fields based on the product type.
+
+{
+"_id": ObjectId("61e65529b6fc4670e05a1c7a"),
+"name": "Smartphone",
+"brand": "XYZ",
+"price": 699,
+"specs": {
+"display": "6.5 inches",
+"storage": "128GB",
+"camera": "Quad-camera setup"
+}
+}
+
+{
+"_id": ObjectId("61e65545b6fc4670e05a1c7b"),
+"name": "Laptop",
+"brand": "ABC",
+"price": 1299,
+"specs": {
+"display": "15.6 inches",
+"storage": "512GB SSD",
+"RAM": "16GB",
+"processor": "Intel Core i7"
+}
+}
+
+MongoDB is a DB
+
+ODMs SQL DBS (Object-Relation Mapping)
+ORM for NoSQL DBs (Object-Document Mapping)
+
+
+
+
+NodeJS ->  RelationDB 
+
+SQL 
+
+
+NodeJS (JS) -> Relational DB (SQL)
+
+const query = "Select * from products where product.product_id = 1";
+const result = DBClient.fire(query);
+
+ Server         ORM/ODM          DB 
+
+
+
+ Nodejs/Expres   Mongoose       MongoDB
