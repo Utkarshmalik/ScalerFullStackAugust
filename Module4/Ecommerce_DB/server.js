@@ -1,6 +1,7 @@
 
 const express = require("express");
 const mongoose = require("mongoose");
+var bodyParser = require('body-parser')
 
 const app = express();
 
@@ -12,8 +13,10 @@ mongoose.connect("mongodb+srv://utkarshmalik1:cOSsLMMR1LvTHXHj@cluster0.49bji.mo
     console.log(err);
 })
 
-//Products 
+app.use(bodyParser.json())
 
+
+//Products 
 
 //Create a Schema for that collection 
 const ProductSchema = mongoose.Schema({
@@ -41,19 +44,89 @@ const ProductSchema = mongoose.Schema({
 //ccreate a collection 
 const ProductModel = mongoose.model("Products",ProductSchema);
 
+app.post("/products",async (req,res)=>{
+
+    if(!req.body.name || !req.body.description || !req.body.price || !req.body.category){
+        return res.status(400).send({message:"Some parameters in the request are missing"});
+    }
+
+
+    const product = new ProductModel(req.body);
+
+    try{
+         const  data = await product.save();
+
+         if(data){
+            return res.status(201).send(data);
+         }
+
+    }
+    catch(err){
+        return res.status(500).send({message:"Internal Server Error! Please try again"});
+    }
+
+});
+
+
+
+app.get("/products",async (req,res)=>{
+
+
+    try{
+          const data = await ProductModel.find({});
+
+          
+          return res.status(200).send(data);
+        
+    }
+    catch(err){
+        return res.status(500).send({message:"Internal Server Error! Please try again"});
+    }
+
+
+
+
+    
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 //insert a document in a collection 
 
 //data for my document 
 
 // const product1 = {
-//     name:"Iphone17",
+//     name:"iphone18",
 //     description:"The most useless phone in the world",
 //     price:5000,
-//     category:"Electronic"
+//     category:"Electronics"
 // }
 
-//creating a new doucment with the data 
+// creating a new doucment with the data 
 
 // const product1Document = new ProductModel(product1);
 
@@ -62,18 +135,17 @@ const ProductModel = mongoose.model("Products",ProductSchema);
 //     console.log("Record Added Successfully")
 // })
 // .catch((err)=>{
-//     console.log("Unable to insert the record");
+//     console.log("Unable to insert the record",err);
 // })
 
 
-ProductModel.find({})
-.then((productData)=>{
-    console.log(productData);
-})
-.catch((err)=>{
-    console.log(err);
-})
-
+// ProductModel.find({})
+// .then((productData)=>{
+//     console.log(productData);
+// })
+// .catch((err)=>{
+//     console.log(err);
+// })
 
 
 
