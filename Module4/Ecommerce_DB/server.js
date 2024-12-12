@@ -71,28 +71,100 @@ app.post("/products",async (req,res)=>{
 
 app.get("/products",async (req,res)=>{
 
-
     try{
           const data = await ProductModel.find({});
 
-          
           return res.status(200).send(data);
         
     }
     catch(err){
         return res.status(500).send({message:"Internal Server Error! Please try again"});
+    }    
+})
+
+app.get("/products/:id",async (req,res)=>{
+
+    const productId  = req.params.id;
+
+    const idValidObjectId = mongoose.Types.ObjectId.isValid(productId);
+
+    if(!idValidObjectId){
+        return res.status(400).send({message:`Id passed : ${productId} is not a valid Object Id`})
     }
 
+ try{
 
+     const data = await ProductModel.findById(productId);
 
-
-    
+     if(data==null){
+        return res.status(404).send({message:`Product with productId: ${productId} is not a valid product id`})
+     }
+       return res.status(200).send(data);   
+    }
+    catch(err){
+        
+        return res.status(500).send({message:`Internal Server Error : ${err.message}! Please try again`,});
+    }    
 })
 
 
+app.delete("/products/:id",async (req,res)=>{
+
+     const productId  = req.params.id;
+
+    const idValidObjectId = mongoose.Types.ObjectId.isValid(productId);
+
+    if(!idValidObjectId){
+        return res.status(400).send({message:`Id passed : ${productId} is not a valid Object Id`})
+    }
+
+ try{
+
+     const data = await ProductModel.deleteOne({_id:productId});
+
+     console.log(data);
+
+     if(data==null || data.deletedCount===0 ){
+        return res.status(404).send({message:`Product with productId: ${productId} is not a valid product id`})
+     }
+
+       return res.status(200).send({message:`Product with productId: ${productId} deleted successfully`});   
+    }
+    catch(err){
+        
+        return res.status(500).send({message:`Internal Server Error : ${err.message}! Please try again`,});
+    }   
+
+})
 
 
+app.put("/products/:id",async (req,res)=>{
 
+     const productId  = req.params.id;
+
+    const idValidObjectId = mongoose.Types.ObjectId.isValid(productId);
+
+    if(!idValidObjectId){
+        return res.status(400).send({message:`Id passed : ${productId} is not a valid Object Id`})
+    }
+
+ try{
+
+     const data = await ProductModel.findByIdAndUpdate(productId,req.body,{new:true});
+
+     if(!data){
+        return res.status(404).send({message:`Product with productId: ${productId} is not a valid product id`})
+     }
+
+     return res.status(200).send(data);
+   
+    }
+    catch(err){
+        
+        return res.status(500).send({message:`Internal Server Error : ${err.message}! Please try again`,});
+    }   
+
+})
 
 
 
@@ -155,3 +227,6 @@ app.listen(port,()=>{
 
     console.log(`Server is running on port ${port}`);
 })
+
+
+// ObjectId is a 12-byte hexadecimal value
