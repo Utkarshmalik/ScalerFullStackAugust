@@ -71,3 +71,16 @@ const result = DBClient.fire(query);
 
 
  Nodejs/Expres   Mongoose       MongoDB
+
+
+
+
+
+ MVC Architecture 
+
+
+ Models  : Represents the schema , data ..etc of the apllications
+ Views/Route : Represents the user interface or what the user interacts with.
+ Controllers : Acts as an intermediary between the model and the view.
+
+ 
