@@ -23,7 +23,6 @@ const ProductSchema = mongoose.Schema({
         required:true,
         enum:["Electronics","Fashion","Jewellery"]
     }
-
 })
 
 //ccreate a collection 

@@ -21,8 +21,6 @@ ProductRoutes(app);
 
 
 
-
-
 const port = 3000;
 
 app.listen(port,()=>{
@@ -31,4 +29,3 @@ app.listen(port,()=>{
 })
 
 
-// ObjectId is a 12-byte hexadecimal value

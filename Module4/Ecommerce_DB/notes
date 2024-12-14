@@ -83,4 +83,33 @@ const result = DBClient.fire(query);
  Views/Route : Represents the user interface or what the user interacts with.
  Controllers : Acts as an intermediary between the model and the view.
 
- 
+ Benifits of MVC architecture
+Separation of Concerns:
+Divides the application into Model, View, and Controller for clear separation of responsibilities.
+
+Modular Development:
+Supports development and maintenance of separate, reusable modules for each component.
+
+Improved Code Reusability:
+Allows reuse of Models, Views, and Controllers in different parts of the application or other projects.
+
+Enhanced Maintainability:
+Changes in one component have minimal impact on the others, simplifying maintenance and debugging.
+
+Scalability:
+Facilitates parallel development and the addition of new features without major rework.
+
+User Interface Flexibility:
+Adapts to various user interfaces while keeping the core logic intact.
+
+Efficient Testing and Debugging:
+Enables isolated unit testing for each component, easing issue identification and resolution.
+
+Parallel Development:
+Supports multiple developers or teams working on different components simultaneously.
+
+Support for Multiple Views:
+Utilizes the same Model and Controller with multiple Views for diverse user interfaces.
+
+Long-Term Maintainability:
+Promotes organized and understandable code, reducing technical debt over time.
