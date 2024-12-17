@@ -1,8 +1,22 @@
 
 import {Link} from "react-router-dom";
-import {Input, Form , Button} from "antd";
+import {Input, Form , Button, message} from "antd";
+import { LoginUser } from "../../calls/users";
 
 function Login(){
+
+  const onLogin = async (values)=>{
+
+    const response = await LoginUser(values);
+
+      if(response.data.success){
+        message.success("Login Successful");
+        window.location.href="/";
+      }else{
+        message.error(response.data.message);
+      }
+
+  }
 
     return <>
     <header className="App-header">
@@ -12,7 +26,7 @@ function Login(){
         </section>
 
         <section className="right-section">
-          <Form layout="vertical">
+          <Form onFinish={onLogin} layout="vertical">
     
           <Form.Item
               label="Email"

@@ -1,13 +1,17 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const authRoutes = require('./src/Routes/auth.routes');
+const movieRoutes = require('./src/Routes/movies.routes')
+
 var bodyParser = require('body-parser')
+var cors = require('cors')
 
 require('dotenv').config()
 
 const app = express();
 
 app.use(bodyParser.json())
+app.use(cors())
 
 
 mongoose.connect(process.env.DB_URL)
@@ -20,6 +24,7 @@ mongoose.connect(process.env.DB_URL)
 
 
 authRoutes(app);
+movieRoutes(app);
 
 
 

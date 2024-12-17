@@ -1,5 +1,5 @@
 const UserModel = require("../Models/user.model");
-
+const bcrypt = require("bcrypt");
 
 
 const onLogin = async (req,res)=>{
@@ -19,7 +19,9 @@ const onLogin = async (req,res)=>{
             message:"User doesnot exists , Please registerr"});
         }
 
-        if(password !== user.password){
+        const isPasswordValid = bcrypt.compareSync(password, user.password);
+
+        if(!isPasswordValid){
           return res.send({success:false,
             message:"Sorry! Invalid Password entered"});
         }
@@ -53,6 +55,12 @@ const onRegister = async (req,res)=>{
         return res.send({success:false,message:"Email already exists"});
      }
 
+     const salt = await bcrypt.genSalt(10);
+     const hashedPassword = bcrypt.hashSync(req.body.password, salt);
+     console.log(hashedPassword);
+
+     req.body.password = hashedPassword;
+
      const newUser = new UserModel(req.body);
      await newUser.save();
 
@@ -60,7 +68,7 @@ const onRegister = async (req,res)=>{
 
     }
      catch(err){
-        return res.status(500).send({message:"Internal Server Error! Please try again"});
+        return res.status(500).send({message:"Internal Server Error! Please try again",err});
     }
 
 

@@ -1,10 +1,23 @@
 
-import {Input, Form , Button} from "antd";
+import {Input, Form , Button, message} from "antd";
 import {Link} from "react-router-dom";
+import { RegisterUser } from "../../calls/users";
 
 function Register(){
 
-    return  <>
+  const onRegister = async (values)=>{
+    console.log("Register Button is clicked");
+     const response =  await RegisterUser(values);
+     console.log(response);
+
+     if(response.data.success){
+      message.success("You are registered successfully! Login to Conitnue");
+     }else{
+      message.error(response.data.message);
+     }
+  }
+
+    return  (<>
     <header className="App-header">
       <main className="main-area mw-500 text-center px-3">
         <section className="left-section">
@@ -12,7 +25,7 @@ function Register(){
         </section>
 
         <section className="right-section">
-          <Form layout="vertical">
+          <Form onFinish={onRegister} layout="vertical">
     
           <Form.Item
                 label="Name"
@@ -85,7 +98,7 @@ function Register(){
         </section>
       </main>
     </header>
-  </>
+  </>)
 
 }
 
