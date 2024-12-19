@@ -8,9 +8,11 @@ function Login(){
   const onLogin = async (values)=>{
 
     const response = await LoginUser(values);
+    console.log(response);
 
       if(response.data.success){
         message.success("Login Successful");
+        localStorage.setItem("token",response.data.token);
         window.location.href="/";
       }else{
         message.error(response.data.message);

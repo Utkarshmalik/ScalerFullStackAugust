@@ -1,6 +1,6 @@
 const UserModel = require("../Models/user.model");
 const bcrypt = require("bcrypt");
-
+const jwt = require("jsonwebtoken");
 
 const onLogin = async (req,res)=>{
 
@@ -26,14 +26,22 @@ const onLogin = async (req,res)=>{
             message:"Sorry! Invalid Password entered"});
         }
 
+        console.log(process.env.SECRET);
+
+        var token = jwt.sign({ userId:user._id}, process.env.SECRET);
+
+        console.log(token);
+
         return res.send({
             success:true,
-            message:"Login Successful"
+            message:"Login Successful",
+            token:token
         })
         
     }
      catch(err){
-        return res.status(500).send({message:"Internal Server Error! Please try again"});
+        console.log(err);
+        return res.status(500).send({message:"Internal Server Error! Please try again",err});
     }
 
 }
