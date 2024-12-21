@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { getAllMovies } from "../../calls/movies";
+import MovieList from "../../Components/MovieList";
 
 function Home(){
 
@@ -15,9 +16,9 @@ function Home(){
         fetchMovies();
     },[])
 
-    return <h1> 
-        Home
-    </h1>
+    return <div>
+          <MovieList/>
+        </div>
     
 }
 

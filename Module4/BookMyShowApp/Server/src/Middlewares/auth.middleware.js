@@ -1,7 +1,8 @@
 
 const jwt = require("jsonwebtoken");
+const UserModel = require("../Models/user.model");
 
-const verfiyToken = (req,res,next)=>{
+const verfiyToken =  (req,res,next)=>{
 
     const tokenString = req.headers["x-access-token"];
 
@@ -11,20 +12,40 @@ const verfiyToken = (req,res,next)=>{
 
     const token = tokenString.split(' ')[1];
 
-    jwt.verify(token,process.env.SECRET,(err,payload)=>{
+    jwt.verify(token,process.env.SECRET,async (err,payload)=>{
 
         if(err){
             return res.status(403).send({message:"Invalid JWT token"});
         }
+
+        const userId = payload.userId;
         
-        console.log("Token is valid");
-        console.log("payload, ",payload);
+        try{
+            const user = await UserModel.findById(userId);
+            req.userDetails = user;
+        }
+        catch(err){
+
+        }
+
         next();
     })
 
 }
 
+const verifyAdmin = (req,res,next)=>{
+
+    const role = req.userDetails.role;
+    
+    if(role!='admin'){
+       return res.status(403).send({message:"You are unauthorised to perform this operation"});
+    }
+    
+    next();
+}
+
 
 module.exports = {
-    verfiyToken
+    verfiyToken,
+    verifyAdmin
 }
