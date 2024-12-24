@@ -45,7 +45,19 @@ const verifyAdmin = (req,res,next)=>{
 }
 
 
+const verifyAdminOrPartner = (req,res,next)=>{
+
+    const role = req.userDetails.role;
+    
+    if(role!='admin' && role!='partner'){
+       return res.status(403).send({message:"You are unauthorised to perform this operation"});
+    }
+
+    next();
+}
+
 module.exports = {
     verfiyToken,
-    verifyAdmin
+    verifyAdmin,
+    verifyAdminOrPartner
 }

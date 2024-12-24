@@ -2,9 +2,12 @@ const express = require('express');
 const mongoose = require('mongoose');
 const authRoutes = require('./src/Routes/auth.routes');
 const movieRoutes = require('./src/Routes/movies.routes')
+const theatreRoutes = require("./src/Routes/theatre.routes");
+const showsRoutes = require("./src/Routes/show.routes");
 
 var bodyParser = require('body-parser')
-var cors = require('cors')
+var cors = require('cors');
+const showRoutes = require('./src/Routes/show.routes');
 
 require('dotenv').config()
 
@@ -25,7 +28,8 @@ mongoose.connect(process.env.DB_URL)
 
 authRoutes(app);
 movieRoutes(app);
-
+theatreRoutes(app);
+showRoutes(app);
 
 
 app.listen(process.env.PORT,()=>{
