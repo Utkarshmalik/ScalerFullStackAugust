@@ -64,6 +64,16 @@ const getAllShows = async (req,res)=>{
 
 }
 
+
+const getTheatesAndShowsByMovieId = (req,res)=>{
+
+    console.log(req.params);
+    console.log(req.query);
+
+
+
+}
+
 module.exports={
-    createNewShow,getAllShows
+    createNewShow,getAllShows,getTheatesAndShowsByMovieId
 }

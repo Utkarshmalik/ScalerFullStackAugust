@@ -21,6 +21,25 @@ const getAllMovies = async (req,res)=>{
 
 }
 
+const getMovieById = async (req,res)=>{
+
+    try{
+
+        const allMovies = await MovieModel.findById(req.params.id);
+
+        return res.status(200).send({
+            success:true,
+            message:"All movies have been fetched",
+            data:allMovies
+        })
+
+
+    }catch(err){
+        return res.status(500).send({message:"Internal Server Error",err});
+    }
+
+
+}
 const createNewMovie = async (req,res)=>{
 
     try{
@@ -129,5 +148,6 @@ module.exports= {
     getAllMovies,
     createNewMovie,
     updateMovieById,
-    deleteMovieById
+    deleteMovieById,
+    getMovieById
 }
