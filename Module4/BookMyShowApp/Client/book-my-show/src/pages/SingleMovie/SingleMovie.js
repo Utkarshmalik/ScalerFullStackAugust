@@ -2,13 +2,17 @@ import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { getMovieById } from "../../calls/movies";
 import Navbar from "../../Components/ Navbar/Navbar";
-import { Flex, Input } from "antd";
+import { Col, Flex, Input, Row } from "antd";
 import moment from "moment";
+import { getShowsForAMovie } from "../../calls/shows";
 
 function SingleMovie(){
     
     const [movie,setMovie] = useState(null);
     const [date, setDate]=  useState(moment().format("YYYY-MM-DD"));
+    const [showsData, setShowsData]= useState(null);
+
+
     const navigate = useNavigate();
 
     const params = useParams();
@@ -24,6 +28,20 @@ function SingleMovie(){
         navigate(`/movie/${params.id}?date=${e.target.value}`)
 
     } 
+
+    const getAllShowsForSelectedMovie=async ()=>{
+
+        console.log(`get shows for movieId : ${params.id} and date : ${date}`);
+
+        const showsData = await getShowsForAMovie(params.id,date);
+
+        setShowsData(showsData.data.data);
+    }
+
+
+    useEffect(()=>{
+        getAllShowsForSelectedMovie();
+    },[date])
 
     useEffect(()=>{
 
@@ -49,7 +67,7 @@ function SingleMovie(){
                   </div>
 
 
-                  <div>
+                  <div> 
 
                     <h1> {movie.movieName} </h1>
 
@@ -71,15 +89,87 @@ function SingleMovie(){
 
 
                   </div>  
-
-
-
               </Flex>
 
             )
 
+        }
 
 
+        {
+            showsData && showsData.length===0 && (
+
+                <div className="pt-3 m-5">
+
+                    <h2 className="blue-clr"> 
+                        Currently, No Theatres available for this movie!
+                    </h2>
+                </div>
+
+            )
+        }
+
+        {
+
+            showsData && showsData.length>0 && (
+
+                <div className="m-3">
+
+                    <h2> Theatres </h2>
+
+                    {
+                        showsData.map(showsData=>{
+
+                            const theatreId = showsData.theatreId;
+                            const theatreDetails = showsData.theatreDetails;
+                            const allShowsForThisTheatre = showsData.allShowsForParticularTheatre;
+
+
+                            return <div>
+
+                                <Row gutter={24} >
+
+                                    <Col lg={{span:8}} >
+
+                                       <h3> {theatreDetails.name} </h3>
+                                       <p> {theatreDetails.address}</p>
+
+                                    </Col>
+
+                                    <Col lg={{span:16}} >
+
+                                    <ul className="show-ul">
+
+                                        {
+                                            allShowsForThisTheatre.map(singleShow=>{
+
+                                                return <li onClick={()=>{
+                                                    navigate(`book-show/${singleShow._id}`);
+
+                                                }} > {singleShow.time} </li>
+                                            })
+                                        }
+
+                                    </ul>
+                                    
+                                    </Col>
+
+
+
+                                </Row>
+
+                                </div>
+
+
+
+                        })
+                    }
+
+
+
+                </div>    
+
+            )
 
         }
 

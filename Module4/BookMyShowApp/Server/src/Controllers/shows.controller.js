@@ -65,11 +65,54 @@ const getAllShows = async (req,res)=>{
 }
 
 
-const getTheatesAndShowsByMovieId = (req,res)=>{
+const getTheatesAndShowsByMovieId = async (req,res)=>{
 
-    console.log(req.params);
-    console.log(req.query);
+    const {movieId} = req.params;
+    const {date} = req.query;
 
+    // list of unique theatres and the shows for this movie in that theatre 
+
+    let allShows = await ShowsModel.find({movie:movieId}).populate("theatre");
+
+
+    //first get all unique theatres from the shows 
+
+
+    let allUniqueTheatres = [];
+
+    allShows.forEach((show)=>{
+        const theatre = allUniqueTheatres.find((theatreId)=>{
+            return theatreId === show.theatre._id;
+        });
+        if(!theatre){
+            allUniqueTheatres.push(show.theatre._id);
+        }
+    });
+
+
+    const uniqueTheatresAndTheirShows = allUniqueTheatres.map((theatreId)=>{
+
+        //get all shows for this theatreId 
+
+        const allShowsForParticularTheatre = allShows.filter((show)=>{
+            return show.theatre._id === theatreId
+        });
+
+        
+        return {
+
+            theatreId,
+            theatreDetails: allShowsForParticularTheatre[0].theatre,
+            allShowsForParticularTheatre
+        }
+
+    })
+
+    return res.status(200).send({
+        success:true,
+        message:"All Shows Fetched for the given movie",
+        data:uniqueTheatresAndTheirShows  
+    })
 
 
 }
