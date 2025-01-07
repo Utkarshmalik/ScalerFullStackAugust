@@ -6,6 +6,8 @@ import Login from './pages/Login/Login';
 import Register from './pages/Register/Register';
 import SingleMovie from './pages/SingleMovie/SingleMovie';
 import BookShow from './pages/BookShow/BookShow';
+import ForgetPassword from './pages/ForgetPassword/ForgetPassword';
+import Reset from './pages/Reset/Reset';
 
 
 function App() {
@@ -20,6 +22,9 @@ function App() {
         <Route path='/register' element={<Register/>} />
         <Route path='/movie/:id' element={<SingleMovie/>} />
         <Route path='/movie/:movieId/book-show/:showId' element={<BookShow/>} />
+        <Route path='/forget' element={<ForgetPassword/>} />
+        <Route path='/reset' element={<Reset/>} />
+
 
       </Routes>
 
