@@ -1,3 +1,4 @@
+const { default: mongoose } = require("mongoose");
 const MovieModel = require("../Models/Movie.model");
 const ShowsModel = require("../Models/Show.model");
 const TheatreModel = require("../Models/Theatre.model");
@@ -117,6 +118,47 @@ const getTheatesAndShowsByMovieId = async (req,res)=>{
 
 }
 
+
+const getShowDetailsByShowId = async (req,res)=>{
+
+    try{
+
+        const showId = req.params.id;
+
+        if(!mongoose.Types.ObjectId.isValid(showId)){
+
+            return res.status(400).send({
+                success:false,
+                message:"Show id passed is invalid format"
+            })
+        }
+
+        const show = await ShowsModel.findById(showId).populate('theatre').populate('movie');
+
+        if(!show){
+            return res.status(400).send({
+                success:false,
+                message:"Show id passed is invalid"
+            })
+        }
+
+
+        return res.send({
+            success:true,
+            message:"Show fetched successfully",
+            data:show
+        })
+
+
+    }
+    catch(err){
+            return res.status(500).send({message:"Internal Server Error",err});
+        }
+
+    
+
+}
+
 module.exports={
-    createNewShow,getAllShows,getTheatesAndShowsByMovieId
+    createNewShow,getAllShows,getTheatesAndShowsByMovieId,getShowDetailsByShowId
 }

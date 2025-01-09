@@ -12,4 +12,18 @@ export async function getShowsForAMovie(movieId,date){
     }
 }
 
+export async function getShowDetails(showId){
+    try{
+         const response = await axiosInstance
+         .get(`http://localhost:8000/shows/${showId}`);
+
+       return response;
+    }
+    catch(err){
+        return err.response;
+    }
+}
+
+
+
 

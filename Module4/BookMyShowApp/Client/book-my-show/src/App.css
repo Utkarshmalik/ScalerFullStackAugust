@@ -199,15 +199,15 @@ hr{
 .seat-ul .seat-btn:hover{
   background-color: #f1f1f1;
 }
-.seat-ul .seat-btn.selected{
+.seat-ul .seat-btn-selected{
   border-color: #02a802;
   background-color: #02a802;
   color: #fff;
 }
-.seat-ul .seat-btn.booked{
-  background-color: #ddd;
-  color:#999;
-  border-color: #ddd;
+.seat-ul .seat-btn-booked{
+  background-color: red;
+  color:white;
+
   cursor:not-allowed;
 }
 .screen-div{
