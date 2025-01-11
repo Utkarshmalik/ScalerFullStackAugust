@@ -5,7 +5,7 @@ export async function MakePayment(data){
     console.log("Make an API call with data",data);
 
     try{
-         const response = await axiosInstance.post("http://localhost:8000/payment",{
+         const response = await axiosInstance.post("https://scalerfullstackaugust.onrender.com/payment",{
         token:data.token,
         amount:data.amount,
         });
@@ -21,7 +21,7 @@ export async function CreateBooking(data){
     console.log("Make an API call with data",data);
 
     try{
-         const response = await axiosInstance.post("http://localhost:8000/bookings",{
+         const response = await axiosInstance.post("https://scalerfullstackaugust.onrender.com/bookings",{
         show:data.showId,
         seats:data.seats,
         transactionId:data.transactionId

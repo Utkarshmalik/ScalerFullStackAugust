@@ -2,7 +2,7 @@ import { axiosInstance } from ".";
 
 export async function getAllMovies(){
     try{
-         const response = await axiosInstance.get("http://localhost:8000/movies");
+         const response = await axiosInstance.get("https://scalerfullstackaugust.onrender.com/movies");
 
        return response;
     }
@@ -14,7 +14,7 @@ export async function getAllMovies(){
 
 export async function getMovieById(id){
     try{
-         const response = await axiosInstance.get(`http://localhost:8000/movies/${id}`);
+         const response = await axiosInstance.get(`https://scalerfullstackaugust.onrender.com/movies/${id}`);
 
        return response;
     }
