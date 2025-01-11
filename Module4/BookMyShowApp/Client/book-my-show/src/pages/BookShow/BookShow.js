@@ -1,12 +1,15 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { getShowDetails } from "../../calls/shows";
-import {Card, Row, Col, Button} from "antd";
+import {Card, Row, Col, Button, message} from "antd";
 import Navbar from "../../Components/ Navbar/Navbar";
+import StripeCheckout from "react-stripe-checkout";
+import { CreateBooking, MakePayment } from "../../calls/bookings";
 
 function BookShow(){
 
     const params = useParams();
+    const navigate = useNavigate();
 
     const showId = params.showId;
 
@@ -113,6 +116,39 @@ return <div className="seat-ul" >
 
     }
 
+    const onToken = async (token)=>{
+
+        console.log(token);
+
+        try{
+            const response = await MakePayment({amount:selectedSeats.length * showDetails.ticketPrice,
+                token:token
+            });
+
+            if(response.data.success){
+                message.success(response.data.message);
+
+
+                const bookingResponse = await CreateBooking({showId:showDetails._id,seats:[...selectedSeats],
+                    transactionId:response.data.data
+                });
+
+            
+                if(bookingResponse.data.success){
+                    message.success(bookingResponse.data.message);
+                    navigate("/");
+                }
+
+            }
+
+        }catch(err){
+
+        }
+
+
+
+    }
+
     const fetchShowData = async ()=>{
 
         try{
@@ -180,8 +216,15 @@ return <div className="seat-ul" >
 
                 {getSeats()}
 
+                {
 
-                <Button> Make Payment </Button>
+                    selectedSeats.length>0 && 
+
+                    <StripeCheckout 
+                    token={onToken}
+                    stripeKey="pk_test_51Pk5XWKp25HZoc30bcTmozGCabcS6KEKI7isIVopkB8TmzislgHqHIY3fzvxstSTY6bSN6LhQeW3z7oYpkc242Sd008g8PAKBI" />
+
+                }
 
 
             </Card>
