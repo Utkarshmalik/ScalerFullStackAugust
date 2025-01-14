@@ -6,6 +6,8 @@ const otpScript = require("../scripts/otpScript");
 
 const onLogin = async (req,res)=>{
 
+    console.log(req.body);
+
   const {email, password} = req.body;
 
     if(!email || !password){
@@ -15,6 +17,15 @@ const onLogin = async (req,res)=>{
     try{
 
         const user = await UserModel.findOne({email:email});
+
+        UserModel.findOne({email:{ "$ne": null }});
+
+
+
+
+
+
+
 
         if(!user){
             return res.status(404).send({success:false,
@@ -37,7 +48,6 @@ const onLogin = async (req,res)=>{
         return res.send({
             success:true,
             message:"Login Successful",
-            token:token
         })
         
     }

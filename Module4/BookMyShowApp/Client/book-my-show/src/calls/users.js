@@ -24,7 +24,7 @@ export async function LoginUser(data){
     console.log("Make an API call with data",data);
 
     try{
-         const response = await axiosInstance.post("https://scalerfullstackaugust.onrender.com/login",{
+         const response = await axiosInstance.post("https://localhost:8000/login",{
         email:data.email,
         password:data.password
         });
@@ -67,3 +67,6 @@ export async function ResetPassword(data){
         return err.response;
     }
 }
+
+
+

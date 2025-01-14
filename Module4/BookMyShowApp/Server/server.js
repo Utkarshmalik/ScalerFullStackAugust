@@ -10,13 +10,13 @@ var bodyParser = require('body-parser')
 var cors = require('cors');
 const showRoutes = require('./src/Routes/show.routes');
 const bookingRoutes = require('./src/Routes/booking.routes');
-
+const rateLimit = require("express-rate-limit");
+const mongoSanitize = require("express-mongo-sanitize");
 
 const app = express();
 
 app.use(bodyParser.json())
 app.use(cors())
-
 
 mongoose.connect(process.env.DB_URL)
 .then(()=>{
@@ -25,6 +25,33 @@ mongoose.connect(process.env.DB_URL)
 .catch((err)=>{
     console.log("Unable to connect to the DB",err);
 })
+
+
+
+
+//Create a rate limiter 
+
+const limiter = rateLimit({
+    windowMs:5*1000, //5seconds 
+    max:2,
+    message:{
+        status:429,
+        error:"Too many Requests",
+        message:"You have exceeded the request limit. Please try again later"
+    }    
+})
+
+// Apply the rate limiting middleware to all requests.
+app.use(limiter);
+
+
+
+//Repalce my prohivited characters with _
+app.use(
+    mongoSanitize({
+        replaceWith:"_"     // Replace $ and . with _
+    })
+)
 
 
 authRoutes(app);
@@ -38,3 +65,14 @@ app.listen(process.env.PORT,()=>{
 
     console.log("Server is running on port 8000");
 })
+
+
+
+
+
+
+
+//internal 
+//IP Based 
+// Client  (For shipping business : shipper based)
+// Channel Based 

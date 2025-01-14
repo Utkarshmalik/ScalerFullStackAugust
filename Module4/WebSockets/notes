@@ -1,0 +1,2 @@
+io.on('connection', callback): Listens for when a new client connects to the WebSocket server.
+socket.on('chat message', callback): Listens for incoming chat message events from the client.
