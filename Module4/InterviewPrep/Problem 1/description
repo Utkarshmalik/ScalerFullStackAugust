@@ -1,0 +1,70 @@
+
+
+How can a NodeJS application effectively serve large files such as 400MB video , without exhausintg the server's RAM and cache resoruces ? 
+
+
+
+Solution : Streaming 
+
+
+What makes streams unique, is that instead of a program reading a file into memory all at once like in the traditional way, streams read chunks of data piece by piece, processing its content without keeping it all in memory.
+
+This makes streams really powerful when working with large amounts of data, for example, a file size can be larger than your free memory space, making it impossible to read the whole file into the memory in order to process it. That’s where streams come to the rescue!
+
+
+All PostsNode.js
+Understanding Streams in Node.js
+by:
+Lizz Parody
+Lizz Parody
+
+in Node.js  on Nov 22 2019
+
+Node.js
+Share
+Streams in Node.js have a reputation for being hard to work with, and even harder to understand.
+
+In the words of Dominic Tarr: “Streams are Node’s best and most misunderstood idea.” Even Dan Abramov, creator of Redux and core team member of React.js is afraid of Node streams.
+
+![dan](//images.ctfassets.net/hspc7zpa5cvq/6uij4d7kgJxdOy4ESjvKS5/24dc5102e9a1f2be5944a69062d0690b/dan.png)
+This article will help you understand streams and how to work with them. So, don’t be afraid. We can figure this out!
+
+What are streams?
+Streams are one of the fundamental concepts that power Node.js applications. They are data-handling method and are used to read or write input into output sequentially.
+
+Streams are a way to handle reading/writing files, network communications, or any kind of end-to-end information exchange in an efficient way.
+
+What makes streams unique, is that instead of a program reading a file into memory all at once like in the traditional way, streams read chunks of data piece by piece, processing its content without keeping it all in memory.
+
+This makes streams really powerful when working with large amounts of data, for example, a file size can be larger than your free memory space, making it impossible to read the whole file into the memory in order to process it. That’s where streams come to the rescue!
+
+Using streams to process smaller chunks of data, makes it possible to read larger files.
+
+Let’s take a “streaming” services such as YouTube or Netflix for example: these services don’t make you download the video and audio feed all at once. Instead, your browser receives the video as a continuous flow of chunks, allowing the recipients to start watching and/or listening almost immediately.
+
+However, streams are not only about working with media or big data. They also give us the power of ‘composability’ in our code. Designing with composability in mind means several components can be combined in a certain way to produce the same type of result. In Node.js it’s possible to compose powerful pieces of code by piping data to and from other smaller pieces of code, using streams.
+
+Why streams
+
+Streams basically provide two major advantages compared to other data handling methods:
+
+Memory efficiency: you don’t need to load large amounts of data in memory before you are able to process it
+Time efficiency: it takes significantly less time to start processing data as soon as you have it, rather than having to wait with processing until the entire payload has been transmitted
+
+
+
+Writable: We can write data to these streams. e.g., fs.createWriteStream().
+Readable: We can read data from these streams. e.g., fs.createReadStream().
+
+
+Readable Stream 
+
+
+Writeable Stream 
+
+
+
+Pipe
+
+.pipe() feeds a readable stream into a writable stream so that as the contents are incrementally read from the readable stream, they are automatically forwarded to the writable stream. It manages the reading from one stream and writing to another stream automatically for you.
+
