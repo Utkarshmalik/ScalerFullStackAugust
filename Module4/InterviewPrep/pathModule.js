@@ -20,3 +20,8 @@ console.log(newPath);
 //resolve to an absoute path 
 const absolutePath = path.resolve('Problem 1','bigFile');
 console.log(absolutePath);
+
+
+
+
+
